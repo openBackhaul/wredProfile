@@ -8,18 +8,21 @@ Technology specific profile definition for WRED (Weighted Random Early Detection
 ### UML
 - Thorsten Heinze (Thorsten.Heinze@openBackhaul.com)
 - [WredProfile_1.0.0-tsp.190509.2015](./WredProfile_1.0.0-tsp.190509.2015.zip)
+- [WredProfile_1.0.0-tsp.190530.1310](./WredProfile_1.0.0-tsp.190530.1310.zip)
 
 ### Overview 
 - Thorsten Heinze (Thorsten.Heinze@openBackhaul.com)
 - [WredProfile_1.0.0-tsp.190509.2015+overview.1](./WredProfile_1.0.0-tsp.190509.2015+overview.1.png)
+- [WredProfile_1.0.0-tsp.190530.1310+overview.1](./WredProfile_1.0.0-tsp.190530.1310+overview.1.png)
 
 ### List of Classes
-- Waseem Sattar (Waseem.Sattar@openBackhaul.com)
-- 
+- to be provided
 
 ### GenDoc Export
 - Thorsten Heinze (Thorsten.Heinze@openBackhaul.com)
 - [WredProfile_1.0.0-tsp.190509.2015+gendoc.1](./WredProfile_1.0.0-tsp.190509.2015+gendoc.1.docx)
+- [WredProfile_1.0.0-tsp.190530.1310+changes.to.tsp.190509.2015](./WredProfile_1.0.0-tsp.190530.1310+changes.to.tsp.190509.2015.docx)
+- [WredProfile_1.0.0-tsp.190530.1310+gendoc.1](./WredProfile_1.0.0-tsp.190530.1310+gendoc.1.docx)
 
 ### YANG File
 - to be provided
