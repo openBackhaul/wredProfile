@@ -24,6 +24,9 @@ Technology specific profile definition for WRED (Weighted Random Early Detection
 - [WredProfile_1.0.0-tsp.190530.1310+changes.to.tsp.190509.2015](./WredProfile_1.0.0-tsp.190530.1310+changes.to.tsp.190509.2015.docx)
 - [WredProfile_1.0.0-tsp.190530.1310+gendoc.1](./WredProfile_1.0.0-tsp.190530.1310+gendoc.1.docx)
 
+### Augmentation Condition
+- When statement in Augmentation statement demands for Profile::profileName==PROFILE_NAME_TYPE_WRED_PROFILE
+
 ### YANG File
 - to be provided
 
