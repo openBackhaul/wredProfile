@@ -40,7 +40,7 @@ Technology specific profile definition for WRED (Weighted Random Early Detection
 
 ### Open Issue List
 - Thorsten Heinze (Thorsten.Heinze@openBackhaul.com)
-- [macInterface/issues](../../issues)
+- [wredProfile/issues](../../issues)
 
 ### Comments
 ./.
