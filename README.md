@@ -24,7 +24,8 @@ Technology specific profile definition for WRED (Weighted Random Early Detection
 - When statement in Augmentation statement demands for Profile::profileName==PROFILE_NAME_TYPE_WRED_PROFILE
 
 ### YANG File
-- to be provided
+- Waseem Sattar (Waseem.Sattar@openBackhaul.com)
+- [WredProfile_1.0.0-tsp.190712.1150+yang.1](./WredProfile_1.0.0-tsp.190712.1150+yang.1.zip)
 
 ### Interface Simulator
 - not planned 
