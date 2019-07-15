@@ -25,7 +25,7 @@ Technology specific profile definition for WRED (Weighted Random Early Detection
 
 ### YANG File
 - Waseem Sattar (Waseem.Sattar@openBackhaul.com)
-- [WredProfile_1.0.0-tsp.190712.1150+yang.1](./WredProfile_1.0.0-tsp.190712.1150+yang.1.zip)
+- [WredProfile_1.0.0-tsp.190712.1150+yang.2](./WredProfile_1.0.0-tsp.190712.1150+yang.2.zip)
 
 ### Interface Simulator
 - not planned 
