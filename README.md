@@ -32,7 +32,7 @@
 ### Publication
 - Candidate for ONF TR-532 v2.0 
 
-### Model Classification
+### Aspired Model Classification
 - Live Network
 
 ### Open Issue List
