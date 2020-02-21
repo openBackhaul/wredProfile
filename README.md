@@ -1,46 +1,41 @@
 # wredProfile
-Technology specific profile definition for WRED (Weighted Random Early Detection)
+- Technology specific profile definition for WRED (Weighted Random Early Detection)
+- Thorsten Heinze (Thorsten.Heinze@openBackhaul.com)
 
 ### Branch
-- Thorsten Heinze (Thorsten.Heinze@openBackhaul.com)
 - 1.0.0-tsp.d.t : Use case driven model for the Transport SDN Pilot at Telefonica Germany
 
 ### UML
-- Thorsten Heinze (Thorsten.Heinze@openBackhaul.com)
-- [WredProfile_1.0.0-tsp.190712.1150](./WredProfile_1.0.0-tsp.190712.1150.zip)
+- [WredProfile_1.0.0-tsp.200124.1610](./WredProfile_1.0.0-tsp.200124.1610.zip)
 
 ### Overview 
-- Thorsten Heinze (Thorsten.Heinze@openBackhaul.com)
-- [WredProfile_1.0.0-tsp.190712.1150+overview.1](./WredProfile_1.0.0-tsp.190712.1150+overview.1.png)
-
-### List of Classes
-- to be provided
+- [WredProfile_1.0.0-tsp.200124.1610+overview.1](./WredProfile_1.0.0-tsp.200124.1610+overview.1.png)
 
 ### GenDoc Export
-- Thorsten Heinze (Thorsten.Heinze@openBackhaul.com)
-- [WredProfile_1.0.0-tsp.190712.1150+gendoc.1](./WredProfile_1.0.0-tsp.190712.1150+gendoc.1.docx)
+- [WredProfile_1.0.0-tsp.200124.1610+gendoc.1](./WredProfile_1.0.0-tsp.200124.1610+gendoc.1.docx)
 
 ### Augmentation Condition
 - When statement in Augmentation statement demands for Profile::profileName==PROFILE_NAME_TYPE_WRED_PROFILE
 
 ### YANG File
-- Waseem Sattar (Waseem.Sattar@openBackhaul.com)
-- [WredProfile_1.0.0-tsp.190712.1150+yang.2](./WredProfile_1.0.0-tsp.190712.1150+yang.2.zip)
+- [WredProfile_1.0.0-tsp.200124.1610+yang.2](./WredProfile_1.0.0-tsp.200124.1610+yang.2.zip)
+
+### JSON Schema
+- to be provided
 
 ### Interface Simulator
-- not planned 
+- to be provided
 
 ### Interface Validator
-- not planned
+- to be provided
 
 ### Publication
-- not planned
+- Candidate for ONF TR-532 v2.0 
 
 ### Model Classification
-- Trial
+- Live Network
 
 ### Open Issue List
-- Thorsten Heinze (Thorsten.Heinze@openBackhaul.com)
 - [wredProfile/issues](../../issues)
 
 ### Comments
