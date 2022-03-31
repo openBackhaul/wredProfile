@@ -22,6 +22,7 @@
 
 ### YANG File
 - [WredProfile_1.0.0-tsp.200124.1610+yang.3](./WredProfile_1.0.0-tsp.200124.1610+yang.3.zip) (deprecated)
+- [WredProfile_1.0.0-tsp.220330.1950+yang.1](./WredProfile_1.0.0-tsp.220330.1950+yang.1.zip)
 
 ### JSON Schema
 - to be provided
