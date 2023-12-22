@@ -1,28 +1,23 @@
 # wredProfile
 - Technology specific profile definition for WRED (Weighted Random Early Detection)
-- Thorsten Heinze (Thorsten.Heinze@openBackhaul.com)
 
 ### Branch
-- 1.0.0-tsp.d.t : Use case driven model for the Transport SDN Pilot at Telefonica Germany
+- 1.0.0-tsi.d.t : Use case driven model for the Transport SDN Introduction at Telefonica Germany
 
 ### UML
-- [WredProfile_1.0.0-tsp.200124.1610](./WredProfile_1.0.0-tsp.200124.1610.zip) (deprecated)
-- [WredProfile_1.0.0-tsp.220330.1950](./WredProfile_1.0.0-tsp.220330.1950.zip)
+- [WredProfile_1.0.0-tsi.240104.1945](./WredProfile_1.0.0-tsi.240104.1945.zip)
 
 ### Overview 
-- [WredProfile_1.0.0-tsp.200124.1610+overview.1](./WredProfile_1.0.0-tsp.200124.1610+overview.1.png) (deprecated)
-- [WredProfile_1.0.0-tsp.220330.1950+overview.1](./WredProfile_1.0.0-tsp.220330.1950+overview.1.png)
+- [WredProfile_1.0.0-tsi.240104.1945+overview.1](./WredProfile_1.0.0-tsi.240104.1945+overview.1.png)
 
 ### GenDoc Export
-- [WredProfile_1.0.0-tsp.200124.1610+gendoc.1](./WredProfile_1.0.0-tsp.200124.1610+gendoc.1.docx) (deprecated)
-- [WredProfile_1.0.0-tsp.220330.1950+gendoc.1](./WredProfile_1.0.0-tsp.220330.1950+gendoc.1.docx)
+- [WredProfile_1.0.0-tsi.240104.1945+gendoc.1](./WredProfile_1.0.0-tsi.240104.1945+gendoc.1.docx)
 
 ### Augmentation Condition
 - When statement in Augmentation statement demands for Profile::profileName==PROFILE_NAME_TYPE_WRED_PROFILE
 
 ### YANG File
-- [WredProfile_1.0.0-tsp.200124.1610+yang.3](./WredProfile_1.0.0-tsp.200124.1610+yang.3.zip) (deprecated)
-- [WredProfile_1.0.0-tsp.220330.1950+yang.1](./WredProfile_1.0.0-tsp.220330.1950+yang.1.zip)
+- [WredProfile_1.0.0-tsi.240104.1945+yang.1](./WredProfile_1.0.0-tsi.240104.1945+yang.1.zip)
 
 ### JSON Schema
 - to be provided
