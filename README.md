@@ -17,7 +17,7 @@
 - When statement in Augmentation statement demands for Profile::profileName==PROFILE_NAME_TYPE_WRED_PROFILE
 
 ### YANG File
-- [WredProfile_1.0.0-tsi.240104.1945+yang.1](./WredProfile_1.0.0-tsi.240104.1945+yang.1.zip)
+- [WredProfile_1.0.0-tsi.240104.1945+yang](./WredProfile_1.0.0-tsi.240104.1945+yang/wred-profile-1-0.yang)
 
 ### Schema
 - [WredProfile_1.0.0-tsi.240104.1945+schema](./WredProfile_1.0.0-tsi.240104.1945+schema/)
