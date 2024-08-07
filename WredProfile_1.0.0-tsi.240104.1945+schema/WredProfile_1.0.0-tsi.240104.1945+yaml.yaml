@@ -1,0 +1,80 @@
+/profile-collection/profile={uuid}/wred-profile-1-0:wred-profile-pac/wred-profile-capability:
+  type: object
+  required:
+    - wred-profile-1-0:wred-profile-capability
+  properties:
+    wred-profile-1-0:wred-profile-capability:
+      type: object
+      required:
+        - available-buffer-size
+        - drop-probability-at-threshold-low-is-avail
+        - gentle-wred-is-avail
+        - sensitivity-setting-is-avail
+        - coloring-is-avail
+      properties:
+        available-buffer-size:
+          type: integer
+          format: int32
+        drop-probability-at-threshold-low-is-avail:
+          type: boolean
+        gentle-wred-is-avail:
+          type: boolean
+        sensitivity-setting-is-avail:
+          type: boolean
+        coloring-is-avail:
+          type: boolean
+
+/profile-collection/profile={uuid}/wred-profile-1-0:wred-profile-pac/wred-profile-configuration:
+  type: object
+  required:
+    - wred-profile-1-0:wred-profile-configuration
+  properties:
+    wred-profile-1-0:wred-profile-configuration:
+      type: object
+      required:
+        - external-label
+        - threshold-low
+        - drop-probability-at-threshold-low
+        - threshold-high
+        - drop-probability-at-threshold-high
+        - gentle-wred-is-on
+        - threshold-gentle
+        - sensitivity
+        - coloring-is-on
+      properties:
+        external-label:
+          type: string
+        threshold-low:
+          type: integer
+          format: int32
+        drop-probability-at-threshold-low:
+          type: integer
+          format: int8
+        threshold-high:
+          type: integer
+          format: int32
+        drop-probability-at-threshold-high:
+          type: integer
+          format: int8
+        gentle-wred-is-on:
+          type: boolean
+        threshold-gentle:
+          type: integer
+          format: int32
+        sensitivity:
+          type: integer
+          format: int8
+        coloring-is-on:
+          type: boolean
+
+/create-wred-profile:
+  type: object
+  required:
+    - created-wred-profile
+  properties:
+    created-wred-profile:
+      type: string
+
+/modify-wred-profile:
+
+/delete-wred-profile:

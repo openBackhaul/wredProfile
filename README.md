@@ -19,20 +19,20 @@
 ### YANG File
 - [WredProfile_1.0.0-tsi.240104.1945+yang.1](./WredProfile_1.0.0-tsi.240104.1945+yang.1.zip)
 
-### JSON Schema
-- to be provided
+### Schema
+- [WredProfile_1.0.0-tsi.240104.1945+schema](./WredProfile_1.0.0-tsi.240104.1945+schema/)
 
 ### Interface Simulator
-- to be provided
+- [WredProfile_1.0.0-tsi.240104.1945+simulator](./WredProfile_1.0.0-tsi.240104.1945+simulator/)
 
 ### Interface Validator
-- to be provided
+- [WredProfile_1.0.0-tsi.240104.1945+validator](./WredProfile_1.0.0-tsi.240104.1945+validator/)
 
 ### Publication
-- Candidate for ONF TR-532 v2.0 
+- Published as a part of ONF TR-532 v2.0  
 
-### Aspired Model Classification
-- Live Network
+### Model Classification
+- Operational in Live Network
 
 ### Open Issue List
 - [wredProfile/issues](../../issues)
