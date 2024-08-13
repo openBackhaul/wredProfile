@@ -70,10 +70,16 @@
 /create-wred-profile:
   type: object
   required:
-    - created-wred-profile
+    - wred-profile-1-0:output
   properties:
-    created-wred-profile:
-      type: string
+    wred-profile-1-0:output:
+      type: object
+      required:
+        - created-wred-profile
+      properties:
+        created-wred-profile:
+          type: string
+
 
 /modify-wred-profile:
 
