@@ -1599,6 +1599,7 @@ components:
         - drop-precedence-at-af-queues-is-avail
         - drop-precedence-at-prio-queues-is-avail
         - available-qos-profile-kind-list
+        - queue-depth-configuration-is-avail
       properties:
         profile-naming-is-avail:
           type: boolean
@@ -1623,7 +1624,7 @@ components:
                   - 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
                   - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
                   - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
-                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_QUEUENAME_NOT_YET_DEFINED'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED'
               supported-queue-depth-list:
                 type: array
                 minItems: 1
@@ -1647,6 +1648,8 @@ components:
               - 'qos-profile-1-0:QOS_PROFILE_KIND_TYPE_MPLS_EXP'
               - 'qos-profile-1-0:QOS_PROFILE_KIND_TYPE_IP_DSCP'
               - 'qos-profile-1-0:QOS_PROFILE_KIND_TYPE_NOT_YET_DEFINED'
+        queue-depth-configuration-is-avail:
+          type: boolean
     qos-profile-configuration:
       type: object
       required:
@@ -1685,7 +1688,7 @@ components:
                   - 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
                   - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
                   - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
-                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_QUEUENAME_NOT_YET_DEFINED'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED'
               queue-depth:
                 type: integer
                 format: int32
@@ -1722,7 +1725,7 @@ components:
                   - 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
                   - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
                   - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
-                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_QUEUENAME_NOT_YET_DEFINED'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED'
               drop-precedence-inside-queue:
                 type: string
                 enum:
@@ -1756,7 +1759,7 @@ components:
                   - 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
                   - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
                   - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
-                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_QUEUENAME_NOT_YET_DEFINED'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED'
               drop-precedence-inside-queue:
                 type: string
                 enum:
@@ -1790,7 +1793,7 @@ components:
                   - 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
                   - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
                   - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
-                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_QUEUENAME_NOT_YET_DEFINED'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED'
               drop-precedence-inside-queue:
                 type: string
                 enum:
@@ -1828,7 +1831,7 @@ components:
                   - 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
                   - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
                   - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
-                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_QUEUENAME_NOT_YET_DEFINED'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED'
               drop-precedence-inside-queue:
                 type: string
                 enum:
@@ -1869,7 +1872,7 @@ components:
                   - 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
                   - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
                   - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
-                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_QUEUENAME_NOT_YET_DEFINED'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED'
               drop-precedence-inside-queue:
                 type: string
                 enum:
@@ -1910,7 +1913,7 @@ components:
                   - 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
                   - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
                   - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
-                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_QUEUENAME_NOT_YET_DEFINED'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED'
               drop-precedence-inside-queue:
                 type: string
                 enum:
