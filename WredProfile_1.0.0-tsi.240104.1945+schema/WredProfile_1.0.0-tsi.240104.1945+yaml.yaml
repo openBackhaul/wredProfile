@@ -80,7 +80,6 @@
         created-wred-profile:
           type: string
 
-
 /modify-wred-profile:
 
 /delete-wred-profile:
