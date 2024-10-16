@@ -1,0 +1,108 @@
+@startuml WredProfile_1.0.0-tsi.240104.1945+diagram.completeness
+skinparam responseMessageBelowArrow true
+
+title
+WredProfile_1.0.0-tsi.240104.1945+diagram.completeness
+end title
+
+participant "Postman" as Postman
+participant "Collection" as Collection
+participant "/control-construct?fields=..." as ListOfLTPUuidAndLidPairsAndNames
+participant "/ethernet-container-capability" as EthernetContainerCapability
+participant "../profile-collection" as ProfileCollection
+participant "../scheduler-profile-capability" as Capability
+participant "../scheduler-profile-configuration" as Configuration
+participant "../createWredProfile" as CreateRpc
+participant "../modifyWredProfile" as ModifyRpc
+participant "../deleteWredProfile" as DeleteRpc
+
+activate Postman
+
+group Preparation
+  Postman --\\o Collection : mountName
+
+  Postman -> ListOfLTPUuidAndLidPairsAndNames : {mountName}
+  Postman <-- ListOfLTPUuidAndLidPairsAndNames : {(uuid, localId, layerProtocolName)}
+  note right Postman
+    selection of EthernetContainer
+  end note
+  Postman --\\o Collection : {ethernetContainerUuidAndLocalId}
+
+  Collection --\\o Postman : {ethernetContainerUuidAndLocalId}
+  Postman -> EthernetContainerCapability : {ethernetContainerUuidAndLocalId}
+  Postman <-- EthernetContainerCapability : {wredProfileIsAvail, wredProfileConfigurationIsAvail}
+  Postman --\\o Collection : wredProfileIsAvail,\n wredProfileConfigurationIsAvail
+
+  Collection --\\o Postman : {wredProfileIsAvail}
+  Postman -> ProfileCollection
+  Postman <-- ProfileCollection : {(uuid, profileName)}
+  note right Postman
+    filter for
+    WredProfile
+  end note
+  Postman --\\o Collection : wredProfileUuid
+end
+
+group Capability Validation
+  Collection --\\o Postman : wredProfileUuid
+  Postman -> Capability : {wredProfileUuid}
+  Postman <-- Capability : {wredProfileCapability}
+  note right Postman
+    schema validation
+  end note
+  Postman --\\o Collection : wredProfileCapability
+end
+
+group Configuration Validation
+  Collection --\\o Postman : wredProfileUuid
+  Postman -> Configuration : {wredProfileUuid}
+  Postman <-- Configuration : {configuration}
+  note right Postman
+    schema validation
+  end note
+end
+
+group Create RPC
+  Collection --\\o Postman : wredProfileIsAvail,\n wredProfileCapability
+  Postman -> CreateRpc : {creationInput}
+  Postman <-- CreateRpc : {createdWredProfileUuid}
+  note right Postman
+    schema validation
+  end note
+  Postman --\\o Collection : creationInput,\n createdWredProfileUuid
+  Collection --\\o Postman : createdWredProfileUuid,\n creationInput,\n wredProfileCapability
+  Postman -> Configuration : {createdWredProfileUuid}
+  Postman <-- Configuration : {createdConfiguration}
+  note right Postman
+    createdConfiguration==creationInput?
+  end note
+end
+
+group Modify RPC
+  Collection --\\o Postman : wredProfileConfigurationIsAvail,\n createdWredProfileUuid,\n WredProfileCapability
+  Postman -> ModifyRpc : {wredProfileToBeModified=createdWredProfileUuid, modificationInput}
+  Postman <-- ModifyRpc : 204
+  note right Postman
+    response==204?
+  end note
+  Postman --\\o Collection : modificationInput
+  Collection --\\o Postman : createdWredProfileUuid,\n wredProfileCapability,\n modificationInput
+  Postman -> Configuration : {createdWredProfileUuid}
+  Postman <-- Configuration : {readConfiguration}
+  note right Postman
+    readConfiguration==modificationInput?
+  end note
+end
+
+group Delete RPC
+  Collection --\\o Postman : createdWredProfileUuid
+  Postman -> DeleteRpc : {obsoleteWredProfile=createdWredProfileUuid}
+  Postman <-- DeleteRpc : 204
+  note right Postman
+    response==204?
+  end note
+end
+
+deactivate Postman
+
+@enduml

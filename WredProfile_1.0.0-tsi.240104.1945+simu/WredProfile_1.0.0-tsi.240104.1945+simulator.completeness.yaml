@@ -1,0 +1,2270 @@
+openapi: 3.0.1
+info:
+  title: WredProfile_1.0.0-tsi.240104.1945+simulator.completeness
+  version: 1.0.0
+
+paths:
+########################################################################################################################
+#   WredProfile_1.0.0-tsi.240104.1945+simulator.completeness in static reference mode
+########################################################################################################################
+#
+# At Application
+# ==============
+#
+# Preparation => MountName=305250001, EthernetContainerUuid=ecUuid1, EthernetContainerLocalId=ecLid1, UUID=wredPro1
+  /core-model-1-4:network-control-domain=cache/control-construct=305250001:
+    parameters:
+      - $ref: '#/components/parameters/user'
+      - $ref: '#/components/parameters/originator'
+      - $ref: '#/components/parameters/x-correlator'
+      - $ref: '#/components/parameters/trace-indicator'
+      - $ref: '#/components/parameters/customer-journey'
+      - $ref: '#/components/parameters/mountName'
+      - $ref: '#/components/parameters/fields'
+    get:
+      operationId: getLtpList
+      summary: 'Provides list of LTPs from cache'
+      tags:
+        - IndividualServices
+      security:
+        - apiKeyAuth: []
+      responses:
+        '200':
+          description: 'List of LTPs provided from cache'
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - core-model-1-4:control-construct
+                properties:
+                  core-model-1-4:control-construct:
+                    type: array
+                    items:
+                      type: object
+                      required:
+                        - logical-termination-point
+                      properties:
+                        logical-termination-point:
+                          type: array
+                          items:
+                            type: object
+                            required:
+                              - uuid
+                              - layer-protocol
+                            properties:
+                              uuid:
+                                type: string
+                                enum:
+                                  - 'ecUuid1'
+                              layer-protocol:
+                                type: array
+                                items:
+                                  type: object
+                                  required:
+                                    - local-id
+                                    - layer-protocol-name
+                                  properties:
+                                    local-id:
+                                      type: string
+                                      enum:
+                                        - 'ecLid1'
+                                    layer-protocol-name:
+                                      type: string
+                                      enum:
+                                        - 'ethernet-container-2-0:LAYER_PROTOCOL_NAME_TYPE_ETHERNET_CONTAINER_LAYER'
+                example:
+                  core-model-1-4:control-construct:
+                    - logical-termination-point:
+                        - uuid: 'ecUuid1'
+                          layer-protocol:
+                            - local-id: 'ecLid1'
+                              layer-protocol-name: 'ethernet-container-2-0:LAYER_PROTOCOL_NAME_TYPE_ETHERNET_CONTAINER_LAYER'
+          headers:
+            x-correlator:
+              $ref: '#/components/headers/x-correlator'
+            exec-time:
+              $ref: '#/components/headers/exec-time'
+            backend-time:
+              $ref: '#/components/headers/backend-time'
+            life-cycle-state:
+              $ref: '#/components/headers/life-cycle-state'
+  /core-model-1-4:network-control-domain=cache/control-construct=305250001/logical-termination-point=ecUuid1/layer-protocol=ecLid1/ethernet-container-2-0:ethernet-container-pac/ethernet-container-capability:
+    parameters:
+      - $ref: '#/components/parameters/user'
+      - $ref: '#/components/parameters/originator'
+      - $ref: '#/components/parameters/x-correlator'
+      - $ref: '#/components/parameters/trace-indicator'
+      - $ref: '#/components/parameters/customer-journey'
+      - $ref: '#/components/parameters/mountName'
+      - $ref: '#/components/parameters/fields'
+    get:
+      operationId: getCachedEthernetContainerCapability
+      summary: 'Provides EthernetContainerCapability from cache'
+      tags:
+        - IndividualServices
+      security:
+        - apiKeyAuth: []
+      responses:
+        '200':
+          description: 'EthernetContainerCapability provided from cache'
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - ethernet-container-2-0:ethernet-container-capability
+                properties:
+                  ethernet-container-2-0:ethernet-container-capability:
+                    type: object
+                    required:
+                      - available-queue-list
+                      - dropping-behavior-configuration-is-avail
+                      - wred-profile-is-avail
+                      - wred-profile-configuration-is-avail
+                      - wred-template-profile-is-avail
+                      - wred-template-profile-configuration-is-avail
+                      - scheduler-kind-configuration-is-avail
+                      - scheduler-profile-configuration-is-avail
+                      - supported-wred-protocol-list
+                      - explicit-congestion-notification-is-avail
+                      - ingress-policing-is-avail
+                      - egress-shaping-is-avail
+                      - supported-maximum-information-rate-list
+                      - supported-maximum-burst-size-list
+                      - bundling-is-avail
+                      - bundling-group-size-max
+                      - support-of-management-frames-without-preamble-is-avail
+                      - supported-header-compression-kind-list
+                      - fec-is-avail
+                      - fec-word-size-max
+                      - supported-fec-redundancy-size-list
+                      - supported-fec-interleaver-kind-list
+                      - supported-fec-interleaver-depth-list
+                      - encryption-is-avail
+                      - admin-shut-down-is-avail
+                      - supported-loop-back-kind-list
+                      - maintenance-timer-range
+                      - statistics-is-avail
+                      - performance-monitoring-is-avail
+                    properties:
+                      available-queue-list:
+                        type: array
+                        minItems: 1
+                        maxItems: 8
+                        items:
+                          type: object
+                          properties:
+                            queue-name:
+                              enum:
+                                - 'ethernet-container-2-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                                - 'ethernet-container-2-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                                - 'ethernet-container-2-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                                - 'ethernet-container-2-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                                - 'ethernet-container-2-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                                - 'ethernet-container-2-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                                - 'ethernet-container-2-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                                - 'ethernet-container-2-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                                - 'ethernet-container-2-0:QUEUE_NAME_TYPE_QUEUENAME_NOT_YET_DEFINED'
+                            supported-queue-depth-list:
+                              type: array
+                              items:
+                                type: integer
+                            available-dropping-behavior-kind-list:
+                              type: array
+                              items:
+                                enum:
+                                  - 'ethernet-container-2-0:DROPPING_BEHAVIOR_KIND_TYPE_DROP_TAIL'
+                                  - 'ethernet-container-2-0:DROPPING_BEHAVIOR_KIND_TYPE_RED'
+                                  - 'ethernet-container-2-0:DROPPING_BEHAVIOR_KIND_TYPE_WRED'
+                                  - 'ethernet-container-2-0:DROPPING_BEHAVIOR_KIND_TYPE_NOT_YET_DEFINED'
+                            available-drop-precedence-kind-list:
+                              type: array
+                              items:
+                                enum:
+                                  - 'ethernet-container-2-0:DROP_PRECEDENCE_TYPE_ALL'
+                                  - 'ethernet-container-2-0:DROP_PRECEDENCE_TYPE_LOW'
+                                  - 'ethernet-container-2-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                                  - 'ethernet-container-2-0:DROP_PRECEDENCE_TYPE_HIGH'
+                                  - 'ethernet-container-2-0:DROP_PRECEDENCE_TYPE_NOT_YET_DEFINED'
+                            wred-profile-per-drop-precedence-is-available:
+                              type: boolean
+                            available-scheduling-kind-list:
+                              type: array
+                              items:
+                                enum:
+                                  - 'ethernet-container-2-0:SCHEDULER_KIND_TYPE_STRICT'
+                                  - 'ethernet-container-2-0:SCHEDULER_KIND_TYPE_WFQ'
+                                  - 'ethernet-container-2-0:SCHEDULER_KIND_TYPE_WRR'
+                                  - 'ethernet-container-2-0:SCHEDULER_KIND_TYPE_DWRR'
+                                  - 'ethernet-container-2-0:SCHEDULER_KIND_TYPE_NOT_YET_DEFINED'
+                          required:
+                            - queue-name
+                            - supported-queue-depth-list
+                            - available-dropping-behavior-kind-list
+                            - available-drop-precedence-kind-list
+                            - wred-profile-per-drop-precedence-is-available
+                            - available-scheduling-kind-list
+                      dropping-behavior-configuration-is-avail:
+                        type: boolean
+                      wred-profile-is-avail:
+                        type: boolean
+                      wred-profile-configuration-is-avail:
+                        type: boolean
+                      wred-template-profile-is-avail:
+                        type: boolean
+                      wred-template-profile-configuration-is-avail:
+                        type: boolean
+                      scheduler-kind-configuration-is-avail:
+                        type: boolean
+                      scheduler-profile-configuration-is-avail:
+                        type: boolean
+                      supported-wred-protocol-list:
+                        type: array
+                        items:
+                          enum:
+                            - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_NONE'
+                            - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_ETHERNET_MAC'
+                            - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_VLAN'
+                            - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_Q_IN_Q'
+                            - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_MPLS'
+                            - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_IPV4'
+                            - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_IPV6'
+                            - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_TCP'
+                            - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_UDP'
+                            - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_RTP'
+                            - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_GTP_U'
+                            - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_OTHERS'
+                            - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_NOT_YET_DEFINED'
+                      explicit-congestion-notification-is-avail:
+                        type: boolean
+                      ingress-policing-is-avail:
+                        type: boolean
+                      egress-shaping-is-avail:
+                        type: boolean
+                      supported-maximum-information-rate-list:
+                        type: array
+                        items:
+                          type: integer
+                      supported-maximum-burst-size-list:
+                        type: array
+                        items:
+                          type: integer
+                      bundling-is-avail:
+                        type: boolean
+                      bundling-group-size-max:
+                        type: integer
+                      support-of-management-frames-without-preamble-is-avail:
+                        type: boolean
+                      supported-header-compression-kind-list:
+                        type: array
+                        items:
+                          type: object
+                          required:
+                            - header-compression-name
+                            - header-compression-mode
+                            - compressed-protocol-layer-list
+                            - mpls-payload-kind-list
+                            - compressed-header-length
+                          properties:
+                            header-compression-name:
+                              type: string
+                            header-compression-mode:
+                              enum:
+                                - 'ethernet-container-2-0:HEADER_COMPRESSION_MODE_TYPE_AUTO'
+                                - 'ethernet-container-2-0:HEADER_COMPRESSION_MODE_TYPE_PROTOCOL_BASED'
+                                - 'ethernet-container-2-0:HEADER_COMPRESSION_MODE_TYPE_LENGTH_BASED'
+                                - 'ethernet-container-2-0:HEADER_COMPRESSION_MODE_TYPE_NO_COMPRESSION'
+                                - 'ethernet-container-2-0:HEADER_COMPRESSION_MODE_TYPE_NOT_YET_DEFINED'
+                            compressed-protocol-layer-list:
+                              type: array
+                              items:
+                                enum:
+                                  - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_NONE'
+                                  - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_ETHERNET_MAC'
+                                  - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_VLAN'
+                                  - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_Q_IN_Q'
+                                  - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_MPLS'
+                                  - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_IPV4'
+                                  - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_IPV6'
+                                  - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_TCP'
+                                  - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_UDP'
+                                  - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_RTP'
+                                  - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_GTP_U'
+                                  - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_OTHERS'
+                                  - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_NOT_YET_DEFINED'
+                            mpls-payload-kind-list:
+                              type: array
+                              items:
+                                enum:
+                                  - 'ethernet-container-2-0:MPLS_PAYLOAD_KIND_TYPE_NONE'
+                                  - 'ethernet-container-2-0:MPLS_PAYLOAD_KIND_TYPE_AUTO'
+                                  - 'ethernet-container-2-0:MPLS_PAYLOAD_KIND_TYPE_ETH_O_MPLS'
+                                  - 'ethernet-container-2-0:MPLS_PAYLOAD_KIND_TYPE_IP_O_MPLS'
+                                  - 'ethernet-container-2-0:MPLS_PAYLOAD_KIND_TYPE_NOT_YET_DEFINED'
+                            compressed-header-length:
+                              type: integer
+
+                      fec-is-avail:
+                        type: boolean
+                      fec-word-size-max:
+                        type: integer
+                      supported-fec-redundancy-size-list:
+                        type: array
+                        items:
+                          enum:
+                            - 'ethernet-container-2-0:FEC_REDUNDANCY_SIZE_TYPE_2'
+                            - 'ethernet-container-2-0:FEC_REDUNDANCY_SIZE_TYPE_4'
+                            - 'ethernet-container-2-0:FEC_REDUNDANCY_SIZE_TYPE_8'
+                            - 'ethernet-container-2-0:FEC_REDUNDANCY_SIZE_TYPE_16'
+                            - 'ethernet-container-2-0:FEC_REDUNDANCY_SIZE_TYPE_20'
+                            - 'ethernet-container-2-0:FEC_REDUNDANCY_SIZE_TYPE_NOT_YET_DEFINED'
+                      supported-fec-interleaver-kind-list:
+                        type: array
+                        items:
+                          enum:
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_KIND_TYPE_NONE'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_KIND_TYPE_BLOCK'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_KIND_TYPE_CONVOLUTION'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_KIND_TYPE_NOT_YET_DEFINED'
+                      supported-fec-interleaver-depth-list:
+                        type: array
+                        items:
+                          enum:
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_1'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_2'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_3'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_4'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_6'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_8'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_12'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_16'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_24'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_32'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_48'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_96'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_NOT_YET_DEFINED'
+                      encryption-is-avail:
+                        type: boolean
+                      admin-shut-down-is-avail:
+                        type: boolean
+                      supported-loop-back-kind-list:
+                        type: array
+                        items:
+                          enum:
+                            - 'ethernet-container-2-0:LOOP_BACK_TYPE_NONE'
+                            - 'ethernet-container-2-0:LOOP_BACK_TYPE_BACK_TO_LOCAL'
+                            - 'ethernet-container-2-0:LOOP_BACK_TYPE_BACK_TO_REMOTE'
+                            - 'ethernet-container-2-0:LOOP_BACK_TYPE_NOT_YET_DEFINED'
+                      maintenance-timer-range:
+                        type: string
+                        pattern: '^(Range of the maintenance timer not yet defined\.)$|^([0-9]{1,}){1,1}([,]{1,1}[ ]{1,1}[1-9]{1,1}[0-9]{0,}){0,}$|^([0-9]{1,}){1,1}(-){1,1}([1-9]{1,1}[0-9]{0,}){1,1}$'
+                      statistics-is-avail:
+                        type: boolean
+                      performance-monitoring-is-avail:
+                        type: boolean
+                example:
+                  ethernet-container-2-0:ethernet-container-capability:
+                    available-queue-list:
+                      - queue-name: 'ethernet-container-2-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                        supported-queue-depth-list:
+                          - 64
+                          - 128
+                          - 192
+                          - 256
+                          - 16000
+                        available-dropping-behavior-kind-list:
+                          - 'ethernet-container-2-0:DROPPING_BEHAVIOR_KIND_TYPE_DROP_TAIL'
+                        available-drop-precedence-kind-list:
+                          - 'ethernet-container-2-0:DROP_PRECEDENCE_TYPE_ALL'
+                        wred-profile-per-drop-precedence-is-available: false
+                        available-scheduling-kind-list:
+                          - 'ethernet-container-2-0:SCHEDULER_KIND_TYPE_STRICT'
+                          - 'ethernet-container-2-0:SCHEDULER_KIND_TYPE_WFQ'
+                    dropping-behavior-configuration-is-avail: true
+                    wred-profile-is-avail: true
+                    wred-profile-configuration-is-avail: true
+                    wred-template-profile-is-avail: true
+                    wred-template-profile-configuration-is-avail: true
+                    scheduler-kind-configuration-is-avail: true
+                    scheduler-profile-configuration-is-avail: true
+                    supported-wred-protocol-list:
+                      - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_ETHERNET_MAC'
+                    explicit-congestion-notification-is-avail: true
+                    ingress-policing-is-avail: true  
+                    egress-shaping-is-avail: true
+                    supported-maximum-information-rate-list:
+                      - 64
+                      - 128
+                      - 192
+                      - 256
+                      - 1000000
+                    supported-maximum-burst-size-list:
+                      - 0
+                      - 16
+                      - 32
+                      - 64
+                      - 128
+                      - 256
+                      - 512
+                      - 1024
+                      - 2048
+                      - 4192
+                      - 8192
+                      - 16384
+                      - 32767
+                    bundling-is-avail: true
+                    bundling-group-size-max: 16
+                    support-of-management-frames-without-preamble-is-avail: true
+                    supported-header-compression-kind-list:
+                      - header-compression-name: 'no-compression'
+                        header-compression-mode: 'ethernet-container-2-0:HEADER_COMPRESSION_MODE_TYPE_NO_COMPRESSION'
+                        compressed-protocol-layer-list:
+                          - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_NOT_YET_DEFINED'
+                        mpls-payload-kind-list:
+                          - 'ethernet-container-2-0:MPLS_PAYLOAD_KIND_TYPE_NOT_YET_DEFINED'
+                        compressed-header-length: -1
+                    fec-is-avail: false
+                    fec-word-size-max: -1
+                    supported-fec-redundancy-size-list:
+                      - 'ethernet-container-2-0:FEC_REDUNDANCY_SIZE_TYPE_NOT_YET_DEFINED'
+                    supported-fec-interleaver-kind-list:
+                      - 'ethernet-container-2-0:FEC_INTERLEAVER_KIND_TYPE_NOT_YET_DEFINED'
+                    supported-fec-interleaver-depth-list:
+                      - 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_NOT_YET_DEFINED'
+                    encryption-is-avail: false
+                    admin-shut-down-is-avail: true
+                    supported-loop-back-kind-list:
+                      - 'ethernet-container-2-0:LOOP_BACK_TYPE_NONE'
+                      - 'ethernet-container-2-0:LOOP_BACK_TYPE_BACK_TO_LOCAL'
+                    maintenance-timer-range: '0,60,120,180...172800'
+                    statistics-is-avail: true
+                    performance-monitoring-is-avail: true
+
+  /core-model-1-4:network-control-domain=cache/control-construct=305250001/profile-collection:
+    parameters:
+      - $ref: '#/components/parameters/user'
+      - $ref: '#/components/parameters/originator'
+      - $ref: '#/components/parameters/x-correlator'
+      - $ref: '#/components/parameters/trace-indicator'
+      - $ref: '#/components/parameters/customer-journey'
+      - $ref: '#/components/parameters/mountName'
+      - $ref: '#/components/parameters/fields'
+    get:
+      operationId: getCachedProfileCollection
+      summary: 'Provides ProfileCollection from cache'
+      tags:
+        - IndividualServices
+      security:
+        - apiKeyAuth: []
+      responses:
+        '200':
+          description: 'ProfileCollection provided from cache'
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - core-model-1-4:profile-collection
+                properties:
+                  core-model-1-4:profile-collection:
+                    type: object
+                    properties:
+                      profile:
+                        type: array
+                        minItems: 0
+                        x-key: uuid
+                        items:
+                          type: object
+                          required:
+                            - uuid
+                            - profile-name
+                          properties:
+                            uuid:
+                              type: string
+                              enum:
+                                - 'wredPro1'
+                            profile-name:
+                              type: string
+                              enum:
+                                - 'wred-profile-1-0:PROFILE_NAME_TYPE_WRED_PROFILE'
+                example:
+                  core-model-1-4:profile-collection:
+                    profile:
+                      - profile-name: 'wred-profile-1-0:PROFILE_NAME_TYPE_WRED_PROFILE'
+                        uuid: 'wredPro1'
+          headers:
+            x-correlator:
+              $ref: '#/components/headers/x-correlator'
+            exec-time:
+              $ref: '#/components/headers/exec-time'
+            backend-time:
+              $ref: '#/components/headers/backend-time'
+            life-cycle-state:
+              $ref: '#/components/headers/life-cycle-state'
+
+# Completeness of GET 200
+  /core-model-1-4:network-control-domain=cache/control-construct=305250001/profile-collection/profile=wredPro1/wred-profile-1-0:wred-profile-pac/wred-profile-capability:
+    parameters:
+      - $ref: '#/components/parameters/user'
+      - $ref: '#/components/parameters/originator'
+      - $ref: '#/components/parameters/x-correlator'
+      - $ref: '#/components/parameters/trace-indicator'
+      - $ref: '#/components/parameters/customer-journey'
+      - $ref: '#/components/parameters/mountName'
+      - $ref: '#/components/parameters/uuid'
+      - $ref: '#/components/parameters/fields'
+    get:
+      operationId: getCachedWredProfileCapability
+      summary: 'Provides WredProfileCapability from cache'
+      tags:
+        - IndividualServices
+      security:
+        - apiKeyAuth: []
+      responses:
+        '200':
+          description: 'WredProfileCapability provided from cache'
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - wred-profile-1-0:wred-profile-capability
+                properties:
+                  wred-profile-1-0:wred-profile-capability:
+                    $ref: '#/components/schemas/wred-profile-capability'
+                example:
+                  wred-profile-1-0:wred-profile-capability:
+                    available-buffer-size: 1000000
+                    drop-probability-at-threshold-low-is-avail: true
+                    gentle-wred-is-avail: true
+                    sensitivity-setting-is-avail: true
+                    coloring-is-avail: true
+          headers:
+            x-correlator:
+              $ref: '#/components/headers/x-correlator'
+            exec-time:
+              $ref: '#/components/headers/exec-time'
+            backend-time:
+              $ref: '#/components/headers/backend-time'
+            life-cycle-state:
+              $ref: '#/components/headers/life-cycle-state'
+  /core-model-1-4:network-control-domain=cache/control-construct=305250001/profile-collection/profile=wredPro1/wred-profile-1-0:wred-profile-pac/wred-profile-configuration:
+    parameters:
+      - $ref: '#/components/parameters/user'
+      - $ref: '#/components/parameters/originator'
+      - $ref: '#/components/parameters/x-correlator'
+      - $ref: '#/components/parameters/trace-indicator'
+      - $ref: '#/components/parameters/customer-journey'
+      - $ref: '#/components/parameters/mountName'
+      - $ref: '#/components/parameters/uuid'
+      - $ref: '#/components/parameters/fields'
+    get:
+      operationId: getCachedWredProfileConfiguration
+      summary: 'Provides WredProfileConfiguration from cache'
+      tags:
+        - IndividualServices
+      security:
+        - apiKeyAuth: []
+      responses:
+        '200':
+          description: 'WredProfileConfiguration provided from cache'
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - wred-profile-1-0:wred-profile-configuration
+                properties:
+                  wred-profile-1-0:wred-profile-configuration:
+                    $ref: '#/components/schemas/wred-profile-configuration'
+                example:
+                  wred-profile-1-0:wred-profile-configuration:
+                    external-label: 'initialConfigValues'
+                    threshold-low: 400000
+                    drop-probability-at-threshold-low: 10
+                    threshold-high: 800000
+                    drop-probability-at-threshold-high: 60
+                    gentle-wred-is-on: true
+                    threshold-gentle: 1000000
+                    sensitivity: 7
+                    coloring-is-on: true
+          headers:
+            x-correlator:
+              $ref: '#/components/headers/x-correlator'
+            exec-time:
+              $ref: '#/components/headers/exec-time'
+            backend-time:
+              $ref: '#/components/headers/backend-time'
+            life-cycle-state:
+              $ref: '#/components/headers/life-cycle-state'
+
+# Completeness of RPC
+  # /core-model-1-4:network-control-domain=live/control-construct=305250001/wred-profile-1-0:create-wred-profile => wredPro3
+  /core-model-1-4:network-control-domain=live/control-construct=305250001/wred-profile-1-0%3Acreate-wred-profile:
+    parameters:
+      - $ref: '#/components/parameters/user'
+      - $ref: '#/components/parameters/originator'
+      - $ref: '#/components/parameters/x-correlator'
+      - $ref: '#/components/parameters/trace-indicator'
+      - $ref: '#/components/parameters/customer-journey'
+      - $ref: '#/components/parameters/mountName'
+    post:
+      operationId: postCreateWredProfile
+      summary: 'Creates new instance of WredProfile'
+      tags:
+        - IndividualServices
+      security:
+        - apiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - input
+              properties:
+                input:
+                  type: object
+                  required:
+                    - external-label
+                    - threshold-low
+                    - drop-probability-at-threshold-low
+                    - threshold-high
+                    - drop-probability-at-threshold-high
+                    - gentle-wred-is-on
+                    - threshold-gentle
+                    - sensitivity
+                    - coloring-is-on
+                  properties:
+                    external-label:
+                      type: string
+                    threshold-low:
+                      type: string
+                    drop-probability-at-threshold-low:
+                      type: string
+                    threshold-high:
+                      type: string
+                    drop-probability-at-threshold-high:
+                      type: string
+                    gentle-wred-is-on:
+                      type: boolean
+                    threshold-gentle:
+                      type: string
+                    sensitivity:
+                      type: string
+                    coloring-is-on:
+                      type: boolean
+              example:
+                input:
+                  external-label: 'label_from_creation'
+                  threshold-low: '200000'
+                  drop-probability-at-threshold-low: '10'
+                  threshold-high: '700000'
+                  drop-probability-at-threshold-high: '80'
+                  gentle-wred-is-on: true
+                  threshold-gentle: '900000'
+                  sensitivity: '4'
+                  coloring-is-on: true
+      responses:
+        '200':
+          description: 'New instance of WredProfile created'
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - wred-profile-1-0:output
+                properties:
+                  wred-profile-1-0:output:
+                    type: object
+                    required:
+                      - created-wred-profile
+                    properties:
+                      created-wred-profile:
+                        type: string
+                example:
+                  wred-profile-1-0:output:
+                    created-wred-profile: 'wredPro3'
+          headers:
+            x-correlator:
+              $ref: '#/components/headers/x-correlator'
+            exec-time:
+              $ref: '#/components/headers/exec-time'
+            backend-time:
+              $ref: '#/components/headers/backend-time'
+            life-cycle-state:
+              $ref: '#/components/headers/life-cycle-state'
+  /core-model-1-4:network-control-domain=cache/control-construct=305250001/profile-collection/profile=wredPro3a/wred-profile-1-0:wred-profile-pac/wred-profile-configuration:
+    parameters:
+      - $ref: '#/components/parameters/user'
+      - $ref: '#/components/parameters/originator'
+      - $ref: '#/components/parameters/x-correlator'
+      - $ref: '#/components/parameters/trace-indicator'
+      - $ref: '#/components/parameters/customer-journey'
+      - $ref: '#/components/parameters/mountName'
+      - $ref: '#/components/parameters/uuid'
+      - $ref: '#/components/parameters/fields'
+    get:
+      operationId: getCachedWredProfileConfiguration
+      summary: 'Provides WredProfileConfiguration from cache'
+      tags:
+        - IndividualServices
+      security:
+        - apiKeyAuth: []
+      responses:
+        '200':
+          description: 'WredProfileConfiguration provided from cache'
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - wred-profile-1-0:wred-profile-configuration
+                properties:
+                  wred-profile-1-0:wred-profile-configuration:
+                    $ref: '#/components/schemas/wred-profile-configuration'
+                example:
+                  wred-profile-1-0:wred-profile-configuration:
+                    external-label: 'label_from_creation'
+                    threshold-low: 200000
+                    drop-probability-at-threshold-low: 10
+                    threshold-high: 700000
+                    drop-probability-at-threshold-high: 80
+                    gentle-wred-is-on: true
+                    threshold-gentle: 900000
+                    sensitivity: 4
+                    coloring-is-on: true
+          headers:
+            x-correlator:
+              $ref: '#/components/headers/x-correlator'
+            exec-time:
+              $ref: '#/components/headers/exec-time'
+            backend-time:
+              $ref: '#/components/headers/backend-time'
+            life-cycle-state:
+              $ref: '#/components/headers/life-cycle-state'
+  # /core-model-1-4:network-control-domain=live/control-construct=305250001/wred-profile-1-0:modify-wred-profile
+  /core-model-1-4:network-control-domain=live/control-construct=305250001/wred-profile-1-0%3Amodify-wred-profile:
+    parameters:
+      - $ref: '#/components/parameters/user'
+      - $ref: '#/components/parameters/originator'
+      - $ref: '#/components/parameters/x-correlator'
+      - $ref: '#/components/parameters/trace-indicator'
+      - $ref: '#/components/parameters/customer-journey'
+      - $ref: '#/components/parameters/mountName'
+    post:
+      operationId: postModifyWredProfile
+      summary: 'Modifies an existing WredProfile'
+      tags:
+        - IndividualServices
+      security:
+        - apiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - input
+              properties:
+                input:
+                  type: object
+                  required:
+                    - wred-profile-to-be-modified
+                  properties:
+                    wred-profile-to-be-modified:
+                      type: string
+                    external-label:
+                      type: string
+                    threshold-low:
+                      type: string
+                    drop-probability-at-threshold-low:
+                      type: string
+                    threshold-high:
+                      type: string
+                    drop-probability-at-threshold-high:
+                      type: string
+                    gentle-wred-is-on:
+                      type: boolean
+                    threshold-gentle:
+                      type: string
+                    sensitivity:
+                      type: string
+                    coloring-is-on:
+                      type: boolean
+              example:
+                input:
+                  wred-profile-to-be-modified: 'wredPro3'
+                  external-label: 'label_from_modification'
+                  threshold-low: '400000'
+                  drop-probability-at-threshold-low: '20'
+                  threshold-high: '900000'
+                  drop-probability-at-threshold-high: '90'
+                  gentle-wred-is-on: false
+                  threshold-gentle: '1000000'
+                  sensitivity: '8'
+                  coloring-is-on: false
+      responses:
+        '204':
+          description: 'Instance of WredProfile updated'
+          headers:
+            x-correlator:
+              $ref: '#/components/headers/x-correlator'
+            exec-time:
+              $ref: '#/components/headers/exec-time'
+            backend-time:
+              $ref: '#/components/headers/backend-time'
+            life-cycle-state:
+              $ref: '#/components/headers/life-cycle-state'
+  /core-model-1-4:network-control-domain=cache/control-construct=305250001/profile-collection/profile=wredPro3b/wred-profile-1-0:wred-profile-pac/wred-profile-configuration:
+    parameters:
+      - $ref: '#/components/parameters/user'
+      - $ref: '#/components/parameters/originator'
+      - $ref: '#/components/parameters/x-correlator'
+      - $ref: '#/components/parameters/trace-indicator'
+      - $ref: '#/components/parameters/customer-journey'
+      - $ref: '#/components/parameters/mountName'
+      - $ref: '#/components/parameters/uuid'
+      - $ref: '#/components/parameters/fields'
+    get:
+      operationId: getCachedWredProfileConfiguration
+      summary: 'Provides WredProfileConfiguration from cache'
+      tags:
+        - IndividualServices
+      security:
+        - apiKeyAuth: []
+      responses:
+        '200':
+          description: 'WredProfileConfiguration provided from cache'
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - wred-profile-1-0:wred-profile-configuration
+                properties:
+                  wred-profile-1-0:wred-profile-configuration:
+                    $ref: '#/components/schemas/wred-profile-configuration'
+                example:
+                  wred-profile-1-0:wred-profile-configuration:
+                    external-label: 'label_from_modification'
+                    threshold-low: 400000
+                    drop-probability-at-threshold-low: 20
+                    threshold-high: 900000
+                    drop-probability-at-threshold-high: 90
+                    gentle-wred-is-on: false
+                    threshold-gentle: 1000000
+                    sensitivity: 8
+                    coloring-is-on: false
+          headers:
+            x-correlator:
+              $ref: '#/components/headers/x-correlator'
+            exec-time:
+              $ref: '#/components/headers/exec-time'
+            backend-time:
+              $ref: '#/components/headers/backend-time'
+            life-cycle-state:
+              $ref: '#/components/headers/life-cycle-state'
+  # /core-model-1-4:network-control-domain=live/control-construct=305250001/wred-profile-1-0:delete-wred-profile
+  /core-model-1-4:network-control-domain=live/control-construct=305250001/wred-profile-1-0%3Adelete-wred-profile:
+    parameters:
+      - $ref: '#/components/parameters/user'
+      - $ref: '#/components/parameters/originator'
+      - $ref: '#/components/parameters/x-correlator'
+      - $ref: '#/components/parameters/trace-indicator'
+      - $ref: '#/components/parameters/customer-journey'
+      - $ref: '#/components/parameters/mountName'
+    post:
+      operationId: postDeleteWredProfile
+      summary: 'Deletes an instance of WredProfile'
+      tags:
+        - IndividualServices
+      security:
+        - apiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - input
+              properties:
+                input:
+                  type: object
+                  required:
+                  - obsolete-wred-profile
+                  properties:
+                    obsolete-wred-profile:
+                      type: string
+              example:
+                input:
+                  obsolete-wred-profile: 'wredPro3'
+      responses:
+        '204':
+          description: 'Instance of WredProfile deleted'
+          headers:
+            x-correlator:
+              $ref: '#/components/headers/x-correlator'
+            exec-time:
+              $ref: '#/components/headers/exec-time'
+            backend-time:
+              $ref: '#/components/headers/backend-time'
+            life-cycle-state:
+              $ref: '#/components/headers/life-cycle-state'
+
+
+#
+# At Controller (copy from above, different paths, less parameters, basicAuth, no headers)
+# =============
+#
+# Preparation => MountName=305250001, UUID=wredPro1
+  /rests/data/network-topology:network-topology/topology=topology-netconf/node=305250001/yang-ext:mount/core-model-1-4:control-construct:
+    parameters:
+      - $ref: '#/components/parameters/mountName'
+      - $ref: '#/components/parameters/fields'
+    get:
+      operationId: getLtpList
+      summary: 'Provides list of LTPs from device'
+      tags:
+        - IndividualServices
+      security:
+        - basicAuth: []
+      responses:
+        '200':
+          description: 'List of LTPs provided from device'
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - core-model-1-4:control-construct
+                properties:
+                  core-model-1-4:control-construct:
+                    type: object
+                    required:
+                      - logical-termination-point
+                    properties:
+                      logical-termination-point:
+                        type: array
+                        items:
+                          type: object
+                          required:
+                            - uuid
+                            - layer-protocol
+                          properties:
+                            uuid:
+                              type: string
+                              enum:
+                                - 'ecUuid1'
+                            layer-protocol:
+                              type: array
+                              items:
+                                type: object
+                                required:
+                                  - local-id
+                                  - layer-protocol-name
+                                properties:
+                                  local-id:
+                                    type: string
+                                    enum:
+                                      - 'ecLid1'
+                                  layer-protocol-name:
+                                    type: string
+                                    enum:
+                                      - 'ethernet-container-2-0:LAYER_PROTOCOL_NAME_TYPE_ETHERNET_CONTAINER_LAYER'
+                example:
+                  core-model-1-4:control-construct:
+                    logical-termination-point:
+                      - uuid: 'ecUuid1'
+                        layer-protocol:
+                          - local-id: 'ecLid1'
+                            layer-protocol-name: 'ethernet-container-2-0:LAYER_PROTOCOL_NAME_TYPE_ETHERNET_CONTAINER_LAYER'
+  /rests/data/network-topology:network-topology/topology=topology-netconf/node=305250001/yang-ext:mount/core-model-1-4:control-construct/logical-termination-point=ecUuid1/layer-protocol=ecLid1/ethernet-container-2-0:ethernet-container-pac/ethernet-container-capability:
+    parameters:
+      - $ref: '#/components/parameters/mountName'
+      - $ref: '#/components/parameters/uuid'
+      - $ref: '#/components/parameters/localId'
+      - $ref: '#/components/parameters/fields'
+    get:
+      operationId: getCachedEthernetContainerCapability
+      summary: 'Provides EthernetContainerCapability from device'
+      tags:
+        - IndividualServices
+      security:
+        - basicAuth: []
+      responses:
+        '200':
+          description: 'EthernetContainerCapability provided from device'
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - ethernet-container-2-0:ethernet-container-capability
+                properties:
+                  ethernet-container-2-0:ethernet-container-capability:
+                    type: object
+                    required:
+                      - available-queue-list
+                      - dropping-behavior-configuration-is-avail
+                      - wred-profile-is-avail
+                      - wred-profile-configuration-is-avail
+                      - wred-template-profile-is-avail
+                      - wred-template-profile-configuration-is-avail
+                      - scheduler-kind-configuration-is-avail
+                      - scheduler-profile-configuration-is-avail
+                      - supported-wred-protocol-list
+                      - explicit-congestion-notification-is-avail
+                      - ingress-policing-is-avail
+                      - egress-shaping-is-avail
+                      - supported-maximum-information-rate-list
+                      - supported-maximum-burst-size-list
+                      - bundling-is-avail
+                      - bundling-group-size-max
+                      - support-of-management-frames-without-preamble-is-avail
+                      - supported-header-compression-kind-list
+                      - fec-is-avail
+                      - fec-word-size-max
+                      - supported-fec-redundancy-size-list
+                      - supported-fec-interleaver-kind-list
+                      - supported-fec-interleaver-depth-list
+                      - encryption-is-avail
+                      - admin-shut-down-is-avail
+                      - supported-loop-back-kind-list
+                      - maintenance-timer-range
+                      - statistics-is-avail
+                      - performance-monitoring-is-avail
+                    properties:
+                      available-queue-list:
+                        type: array
+                        minItems: 1
+                        maxItems: 8
+                        items:
+                          type: object
+                          properties:
+                            queue-name:
+                              enum:
+                                - 'ethernet-container-2-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                                - 'ethernet-container-2-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                                - 'ethernet-container-2-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                                - 'ethernet-container-2-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                                - 'ethernet-container-2-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                                - 'ethernet-container-2-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                                - 'ethernet-container-2-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                                - 'ethernet-container-2-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                                - 'ethernet-container-2-0:QUEUE_NAME_TYPE_QUEUENAME_NOT_YET_DEFINED'
+                            supported-queue-depth-list:
+                              type: array
+                              items:
+                                type: integer
+                            available-dropping-behavior-kind-list:
+                              type: array
+                              items:
+                                enum:
+                                  - 'ethernet-container-2-0:DROPPING_BEHAVIOR_KIND_TYPE_DROP_TAIL'
+                                  - 'ethernet-container-2-0:DROPPING_BEHAVIOR_KIND_TYPE_RED'
+                                  - 'ethernet-container-2-0:DROPPING_BEHAVIOR_KIND_TYPE_WRED'
+                                  - 'ethernet-container-2-0:DROPPING_BEHAVIOR_KIND_TYPE_NOT_YET_DEFINED'
+                            available-drop-precedence-kind-list:
+                              type: array
+                              items:
+                                enum:
+                                  - 'ethernet-container-2-0:DROP_PRECEDENCE_TYPE_ALL'
+                                  - 'ethernet-container-2-0:DROP_PRECEDENCE_TYPE_LOW'
+                                  - 'ethernet-container-2-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                                  - 'ethernet-container-2-0:DROP_PRECEDENCE_TYPE_HIGH'
+                                  - 'ethernet-container-2-0:DROP_PRECEDENCE_TYPE_NOT_YET_DEFINED'
+                            wred-profile-per-drop-precedence-is-available:
+                              type: boolean
+                            available-scheduling-kind-list:
+                              type: array
+                              items:
+                                enum:
+                                  - 'ethernet-container-2-0:SCHEDULER_KIND_TYPE_STRICT'
+                                  - 'ethernet-container-2-0:SCHEDULER_KIND_TYPE_WFQ'
+                                  - 'ethernet-container-2-0:SCHEDULER_KIND_TYPE_WRR'
+                                  - 'ethernet-container-2-0:SCHEDULER_KIND_TYPE_DWRR'
+                                  - 'ethernet-container-2-0:SCHEDULER_KIND_TYPE_NOT_YET_DEFINED'
+                          required:
+                            - queue-name
+                            - supported-queue-depth-list
+                            - available-dropping-behavior-kind-list
+                            - available-drop-precedence-kind-list
+                            - wred-profile-per-drop-precedence-is-available
+                            - available-scheduling-kind-list
+                      dropping-behavior-configuration-is-avail:
+                        type: boolean
+                      wred-profile-is-avail:
+                        type: boolean
+                      wred-profile-configuration-is-avail:
+                        type: boolean
+                      wred-template-profile-is-avail:
+                        type: boolean
+                      wred-template-profile-configuration-is-avail:
+                        type: boolean
+                      scheduler-kind-configuration-is-avail:
+                        type: boolean
+                      scheduler-profile-configuration-is-avail:
+                        type: boolean
+                      supported-wred-protocol-list:
+                        type: array
+                        items:
+                          enum:
+                            - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_NONE'
+                            - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_ETHERNET_MAC'
+                            - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_VLAN'
+                            - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_Q_IN_Q'
+                            - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_MPLS'
+                            - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_IPV4'
+                            - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_IPV6'
+                            - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_TCP'
+                            - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_UDP'
+                            - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_RTP'
+                            - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_GTP_U'
+                            - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_OTHERS'
+                            - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_NOT_YET_DEFINED'
+                      explicit-congestion-notification-is-avail:
+                        type: boolean
+                      ingress-policing-is-avail:
+                        type: boolean
+                      egress-shaping-is-avail:
+                        type: boolean
+                      supported-maximum-information-rate-list:
+                        type: array
+                        items:
+                          type: integer
+                      supported-maximum-burst-size-list:
+                        type: array
+                        items:
+                          type: integer
+                      bundling-is-avail:
+                        type: boolean
+                      bundling-group-size-max:
+                        type: integer
+                      support-of-management-frames-without-preamble-is-avail:
+                        type: boolean
+                      supported-header-compression-kind-list:
+                        type: array
+                        items:
+                          type: object
+                          required:
+                            - header-compression-name
+                            - header-compression-mode
+                            - compressed-protocol-layer-list
+                            - mpls-payload-kind-list
+                            - compressed-header-length
+                          properties:
+                            header-compression-name:
+                              type: string
+                            header-compression-mode:
+                              enum:
+                                - 'ethernet-container-2-0:HEADER_COMPRESSION_MODE_TYPE_AUTO'
+                                - 'ethernet-container-2-0:HEADER_COMPRESSION_MODE_TYPE_PROTOCOL_BASED'
+                                - 'ethernet-container-2-0:HEADER_COMPRESSION_MODE_TYPE_LENGTH_BASED'
+                                - 'ethernet-container-2-0:HEADER_COMPRESSION_MODE_TYPE_NO_COMPRESSION'
+                                - 'ethernet-container-2-0:HEADER_COMPRESSION_MODE_TYPE_NOT_YET_DEFINED'
+                            compressed-protocol-layer-list:
+                              type: array
+                              items:
+                                enum:
+                                  - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_NONE'
+                                  - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_ETHERNET_MAC'
+                                  - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_VLAN'
+                                  - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_Q_IN_Q'
+                                  - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_MPLS'
+                                  - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_IPV4'
+                                  - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_IPV6'
+                                  - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_TCP'
+                                  - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_UDP'
+                                  - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_RTP'
+                                  - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_GTP_U'
+                                  - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_OTHERS'
+                                  - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_NOT_YET_DEFINED'
+                            mpls-payload-kind-list:
+                              type: array
+                              items:
+                                enum:
+                                  - 'ethernet-container-2-0:MPLS_PAYLOAD_KIND_TYPE_NONE'
+                                  - 'ethernet-container-2-0:MPLS_PAYLOAD_KIND_TYPE_AUTO'
+                                  - 'ethernet-container-2-0:MPLS_PAYLOAD_KIND_TYPE_ETH_O_MPLS'
+                                  - 'ethernet-container-2-0:MPLS_PAYLOAD_KIND_TYPE_IP_O_MPLS'
+                                  - 'ethernet-container-2-0:MPLS_PAYLOAD_KIND_TYPE_NOT_YET_DEFINED'
+                            compressed-header-length:
+                              type: integer
+
+                      fec-is-avail:
+                        type: boolean
+                      fec-word-size-max:
+                        type: integer
+                      supported-fec-redundancy-size-list:
+                        type: array
+                        items:
+                          enum:
+                            - 'ethernet-container-2-0:FEC_REDUNDANCY_SIZE_TYPE_2'
+                            - 'ethernet-container-2-0:FEC_REDUNDANCY_SIZE_TYPE_4'
+                            - 'ethernet-container-2-0:FEC_REDUNDANCY_SIZE_TYPE_8'
+                            - 'ethernet-container-2-0:FEC_REDUNDANCY_SIZE_TYPE_16'
+                            - 'ethernet-container-2-0:FEC_REDUNDANCY_SIZE_TYPE_20'
+                            - 'ethernet-container-2-0:FEC_REDUNDANCY_SIZE_TYPE_NOT_YET_DEFINED'
+                      supported-fec-interleaver-kind-list:
+                        type: array
+                        items:
+                          enum:
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_KIND_TYPE_NONE'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_KIND_TYPE_BLOCK'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_KIND_TYPE_CONVOLUTION'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_KIND_TYPE_NOT_YET_DEFINED'
+                      supported-fec-interleaver-depth-list:
+                        type: array
+                        items:
+                          enum:
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_1'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_2'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_3'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_4'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_6'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_8'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_12'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_16'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_24'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_32'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_48'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_96'
+                            - 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_NOT_YET_DEFINED'
+                      encryption-is-avail:
+                        type: boolean
+                      admin-shut-down-is-avail:
+                        type: boolean
+                      supported-loop-back-kind-list:
+                        type: array
+                        items:
+                          enum:
+                            - 'ethernet-container-2-0:LOOP_BACK_TYPE_NONE'
+                            - 'ethernet-container-2-0:LOOP_BACK_TYPE_BACK_TO_LOCAL'
+                            - 'ethernet-container-2-0:LOOP_BACK_TYPE_BACK_TO_REMOTE'
+                            - 'ethernet-container-2-0:LOOP_BACK_TYPE_NOT_YET_DEFINED'
+                      maintenance-timer-range:
+                        type: string
+                        pattern: '^(Range of the maintenance timer not yet defined\.)$|^([0-9]{1,}){1,1}([,]{1,1}[ ]{1,1}[1-9]{1,1}[0-9]{0,}){0,}$|^([0-9]{1,}){1,1}(-){1,1}([1-9]{1,1}[0-9]{0,}){1,1}$'
+                      statistics-is-avail:
+                        type: boolean
+                      performance-monitoring-is-avail:
+                        type: boolean
+                example:
+                  ethernet-container-2-0:ethernet-container-capability:
+                    available-queue-list:
+                      - queue-name: 'ethernet-container-2-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                        supported-queue-depth-list:
+                          - 64
+                          - 128
+                          - 192
+                          - 256
+                          - 16000
+                        available-dropping-behavior-kind-list:
+                          - 'ethernet-container-2-0:DROPPING_BEHAVIOR_KIND_TYPE_DROP_TAIL'
+                        available-drop-precedence-kind-list:
+                          - 'ethernet-container-2-0:DROP_PRECEDENCE_TYPE_ALL'
+                        wred-profile-per-drop-precedence-is-available: false
+                        available-scheduling-kind-list:
+                          - 'ethernet-container-2-0:SCHEDULER_KIND_TYPE_STRICT'
+                          - 'ethernet-container-2-0:SCHEDULER_KIND_TYPE_WFQ'
+                    dropping-behavior-configuration-is-avail: true
+                    wred-profile-is-avail: true
+                    wred-profile-configuration-is-avail: true
+                    wred-template-profile-is-avail: true
+                    wred-template-profile-configuration-is-avail: true
+                    scheduler-kind-configuration-is-avail: true
+                    scheduler-profile-configuration-is-avail: true
+                    supported-wred-protocol-list:
+                      - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_ETHERNET_MAC'
+                    explicit-congestion-notification-is-avail: true
+                    ingress-policing-is-avail: true  
+                    egress-shaping-is-avail: true
+                    supported-maximum-information-rate-list:
+                      - 64
+                      - 128
+                      - 192
+                      - 256
+                      - 1000000
+                    supported-maximum-burst-size-list:
+                      - 0
+                      - 16
+                      - 32
+                      - 64
+                      - 128
+                      - 256
+                      - 512
+                      - 1024
+                      - 2048
+                      - 4192
+                      - 8192
+                      - 16384
+                      - 32767
+                    bundling-is-avail: true
+                    bundling-group-size-max: 16
+                    support-of-management-frames-without-preamble-is-avail: true
+                    supported-header-compression-kind-list:
+                      - header-compression-name: 'no-compression'
+                        header-compression-mode: 'ethernet-container-2-0:HEADER_COMPRESSION_MODE_TYPE_NO_COMPRESSION'
+                        compressed-protocol-layer-list:
+                          - 'ethernet-container-2-0:PROTOCOL_LAYER_TYPE_NOT_YET_DEFINED'
+                        mpls-payload-kind-list:
+                          - 'ethernet-container-2-0:MPLS_PAYLOAD_KIND_TYPE_NOT_YET_DEFINED'
+                        compressed-header-length: -1
+                    fec-is-avail: false
+                    fec-word-size-max: -1
+                    supported-fec-redundancy-size-list:
+                      - 'ethernet-container-2-0:FEC_REDUNDANCY_SIZE_TYPE_NOT_YET_DEFINED'
+                    supported-fec-interleaver-kind-list:
+                      - 'ethernet-container-2-0:FEC_INTERLEAVER_KIND_TYPE_NOT_YET_DEFINED'
+                    supported-fec-interleaver-depth-list:
+                      - 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_NOT_YET_DEFINED'
+                    encryption-is-avail: false
+                    admin-shut-down-is-avail: true
+                    supported-loop-back-kind-list:
+                      - 'ethernet-container-2-0:LOOP_BACK_TYPE_NONE'
+                      - 'ethernet-container-2-0:LOOP_BACK_TYPE_BACK_TO_LOCAL'
+                    maintenance-timer-range: '0,60,120,180...172800'
+                    statistics-is-avail: true
+                    performance-monitoring-is-avail: true
+
+  /rests/data/network-topology:network-topology/topology=topology-netconf/node=305250001/yang-ext:mount/core-model-1-4:control-construct/profile-collection:
+    parameters:
+      - $ref: '#/components/parameters/mountName'
+      - $ref: '#/components/parameters/fields'
+    get:
+      operationId: getProfileCollection
+      summary: 'Provides ProfileCollection from device'
+      tags:
+        - IndividualServices
+      security:
+        - basicAuth: []
+      responses:
+        '200':
+          description: 'ProfileCollection provided from device'
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - core-model-1-4:profile-collection
+                properties:
+                  core-model-1-4:profile-collection:
+                    type: object
+                    properties:
+                      profile:
+                        type: array
+                        minItems: 0
+                        x-key: uuid
+                        items:
+                          type: object
+                          required:
+                            - uuid
+                            - profile-name
+                          properties:
+                            uuid:
+                              type: string
+                              enum:
+                                - 'wredPro1'
+                            profile-name:
+                              type: string
+                              enum:
+                                - 'wred-profile-1-0:PROFILE_NAME_TYPE_WRED_PROFILE'
+                example:
+                  core-model-1-4:profile-collection:
+                    profile:
+                      - profile-name: 'wred-profile-1-0:PROFILE_NAME_TYPE_WRED_PROFILE'
+                        uuid: 'wredPro1'
+
+# Completeness of GET 200
+  /rests/data/network-topology:network-topology/topology=topology-netconf/node=305250001/yang-ext:mount/core-model-1-4:control-construct/profile-collection/profile=wredPro1/wred-profile-1-0:wred-profile-pac/wred-profile-capability:
+    parameters:
+      - $ref: '#/components/parameters/mountName'
+      - $ref: '#/components/parameters/uuid'
+      - $ref: '#/components/parameters/fields'
+    get:
+      operationId: getWredProfileCapability
+      summary: 'Provides WredProfileCapability from device'
+      tags:
+        - IndividualServices
+      security:
+        - basicAuth: []
+      responses:
+        '200':
+          description: 'WredProfileCapability provided from device'
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - wred-profile-1-0:wred-profile-capability
+                properties:
+                  wred-profile-1-0:wred-profile-capability:
+                    $ref: '#/components/schemas/wred-profile-capability'
+                example:
+                  wred-profile-1-0:wred-profile-capability:
+                    available-buffer-size: 1000000
+                    drop-probability-at-threshold-low-is-avail: true
+                    gentle-wred-is-avail: true
+                    sensitivity-setting-is-avail: true
+                    coloring-is-avail: true
+  /rests/data/network-topology:network-topology/topology=topology-netconf/node=305250001/yang-ext:mount/core-model-1-4:control-construct/profile-collection/profile=wredPro1/wred-profile-1-0:wred-profile-pac/wred-profile-configuration:
+    parameters:
+      - $ref: '#/components/parameters/mountName'
+      - $ref: '#/components/parameters/uuid'
+      - $ref: '#/components/parameters/fields'
+    get:
+      operationId: getWredProfileConfiguration
+      summary: 'Provides WredProfileConfiguration from device'
+      tags:
+        - IndividualServices
+      security:
+        - basicAuth: []
+      responses:
+        '200':
+          description: 'WredProfileConfiguration provided from device'
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - wred-profile-1-0:wred-profile-configuration
+                properties:
+                  wred-profile-1-0:wred-profile-configuration:
+                    $ref: '#/components/schemas/wred-profile-configuration'
+                example:
+                  wred-profile-1-0:wred-profile-configuration:
+                    external-label: 'initialConfigValues'
+                    threshold-low: 400000
+                    drop-probability-at-threshold-low: 10
+                    threshold-high: 800000
+                    drop-probability-at-threshold-high: 60
+                    gentle-wred-is-on: true
+                    threshold-gentle: 1000000
+                    sensitivity: 7
+                    coloring-is-on: true
+
+# Completeness of RPC
+  # /rests/operations/network-topology:network-topology/topology=topology-netconf/node=305250001/yang-ext:mount/wred-profile-1-0:create-wred-profile => wredPro3
+  /rests/operations/network-topology:network-topology/topology=topology-netconf/node=305250001/yang-ext:mount/wred-profile-1-0%3Acreate-wred-profile:
+    parameters:
+      - $ref: '#/components/parameters/mountName'
+    post:
+      operationId: postCreateWredProfile
+      summary: 'Creates new instance of WredProfile'
+      tags:
+        - IndividualServices
+      security:
+        - basicAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - input
+              properties:
+                input:
+                  type: object
+                  required:
+                    - external-label
+                    - threshold-low
+                    - drop-probability-at-threshold-low
+                    - threshold-high
+                    - drop-probability-at-threshold-high
+                    - gentle-wred-is-on
+                    - threshold-gentle
+                    - sensitivity
+                    - coloring-is-on
+                  properties:
+                    external-label:
+                      type: string
+                    threshold-low:
+                      type: string
+                    drop-probability-at-threshold-low:
+                      type: string
+                    threshold-high:
+                      type: string
+                    drop-probability-at-threshold-high:
+                      type: string
+                    gentle-wred-is-on:
+                      type: boolean
+                    threshold-gentle:
+                      type: string
+                    sensitivity:
+                      type: string
+                    coloring-is-on:
+                      type: boolean
+              example:
+                input:
+                  external-label: 'label_from_creation'
+                  threshold-low: '200000'
+                  drop-probability-at-threshold-low: '10'
+                  threshold-high: '700000'
+                  drop-probability-at-threshold-high: '80'
+                  gentle-wred-is-on: true
+                  threshold-gentle: '900000'
+                  sensitivity: '4'
+                  coloring-is-on: true
+      responses:
+        '200':
+          description: 'New instance of WredProfile created'
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - wred-profile-1-0:output
+                properties:
+                  wred-profile-1-0:output:
+                    type: object
+                    required:
+                      - created-wred-profile
+                    properties:
+                      created-wred-profile:
+                        type: string
+                example:
+                  wred-profile-1-0:output:
+                    created-wred-profile: 'wredPro3'
+  /rests/data/network-topology:network-topology/topology=topology-netconf/node=305250001/yang-ext:mount/core-model-1-4:control-construct/profile-collection/profile=wredPro3a/wred-profile-1-0:wred-profile-pac/wred-profile-configuration:
+    parameters:
+      - $ref: '#/components/parameters/mountName'
+      - $ref: '#/components/parameters/uuid'
+      - $ref: '#/components/parameters/fields'
+    get:
+      operationId: getWredProfileConfiguration
+      summary: 'Provides WredProfileConfiguration from device'
+      tags:
+        - IndividualServices
+      security:
+        - basicAuth: []
+      responses:
+        '200':
+          description: 'WredProfileConfiguration provided from device'
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - wred-profile-1-0:wred-profile-configuration
+                properties:
+                  wred-profile-1-0:wred-profile-configuration:
+                    $ref: '#/components/schemas/wred-profile-configuration'
+                example:
+                  wred-profile-1-0:wred-profile-configuration:
+                    external-label: 'label_from_creation'
+                    threshold-low: 200000
+                    drop-probability-at-threshold-low: 10
+                    threshold-high: 700000
+                    drop-probability-at-threshold-high: 80
+                    gentle-wred-is-on: true
+                    threshold-gentle: 900000
+                    sensitivity: 4
+                    coloring-is-on: true
+  # /rests/operations/network-topology:network-topology/topology=topology-netconf/node=305250001/yang-ext:mount/wred-profile-1-0:modify-wred-profile
+  /rests/operations/network-topology:network-topology/topology=topology-netconf/node=305250001/yang-ext:mount/wred-profile-1-0%3Amodify-wred-profile:
+    parameters:
+      - $ref: '#/components/parameters/mountName'
+    post:
+      operationId: postModifyWredProfile
+      summary: 'Modifies an existing WredProfile'
+      tags:
+        - IndividualServices
+      security:
+        - basicAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - input
+              properties:
+                input:
+                  type: object
+                  required:
+                    - wred-profile-to-be-modified
+                  properties:
+                    wred-profile-to-be-modified:
+                      type: string
+                    external-label:
+                      type: string
+                    threshold-low:
+                      type: string
+                    drop-probability-at-threshold-low:
+                      type: string
+                    threshold-high:
+                      type: string
+                    drop-probability-at-threshold-high:
+                      type: string
+                    gentle-wred-is-on:
+                      type: boolean
+                    threshold-gentle:
+                      type: string
+                    sensitivity:
+                      type: string
+                    coloring-is-on:
+                      type: boolean
+              example:
+                input:
+                  wred-profile-to-be-modified: 'wredPro3'
+                  external-label: 'label_from_modification'
+                  threshold-low: '400000'
+                  drop-probability-at-threshold-low: '20'
+                  threshold-high: '900000'
+                  drop-probability-at-threshold-high: '90'
+                  gentle-wred-is-on: false
+                  threshold-gentle: '1000000'
+                  sensitivity: '8'
+                  coloring-is-on: false
+      responses:
+        '204':
+          description: 'Instance of WredProfile updated'
+  /rests/data/network-topology:network-topology/topology=topology-netconf/node=305250001/yang-ext:mount/core-model-1-4:control-construct/profile-collection/profile=wredPro3b/wred-profile-1-0:wred-profile-pac/wred-profile-configuration:
+    parameters:
+      - $ref: '#/components/parameters/mountName'
+      - $ref: '#/components/parameters/uuid'
+      - $ref: '#/components/parameters/fields'
+    get:
+      operationId: getWredProfileConfiguration
+      summary: 'Provides WredProfileConfiguration from device'
+      tags:
+        - IndividualServices
+      security:
+        - basicAuth: []
+      responses:
+        '200':
+          description: 'WredProfileConfiguration provided from device'
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - wred-profile-1-0:wred-profile-configuration
+                properties:
+                  wred-profile-1-0:wred-profile-configuration:
+                    $ref: '#/components/schemas/wred-profile-configuration'
+                example:
+                  wred-profile-1-0:wred-profile-configuration:
+                    external-label: 'label_from_modification'
+                    threshold-low: 400000
+                    drop-probability-at-threshold-low: 20
+                    threshold-high: 900000
+                    drop-probability-at-threshold-high: 90
+                    gentle-wred-is-on: false
+                    threshold-gentle: 1000000
+                    sensitivity: 8
+                    coloring-is-on: false
+  # /rests/operations/network-topology:network-topology/topology=topology-netconf/node=305250001/yang-ext:mount/wred-profile-1-0:delete-wred-profile
+  /rests/operations/network-topology:network-topology/topology=topology-netconf/node=305250001/yang-ext:mount/wred-profile-1-0%3Adelete-wred-profile:
+    parameters:
+      - $ref: '#/components/parameters/mountName'
+    post:
+      operationId: postDeleteWredProfile
+      summary: 'Deletes an instance of WredProfile'
+      tags:
+        - IndividualServices
+      security:
+        - basicAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - input
+              properties:
+                input:
+                  type: object
+                  required:
+                  - obsolete-wred-profile
+                  properties:
+                    obsolete-wred-profile:
+                      type: string
+              example:
+                input:
+                  obsolete-wred-profile: 'wredPro3'
+      responses:
+        '204':
+          description: 'Instance of WredProfile deleted'
+
+
+########################################################################################################################
+#   Generic Paths
+########################################################################################################################
+  /generic/core-model-1-4:network-control-domain=cache/control-construct={mountName}/profile-collection/profile={uuid}/wred-profile-1-0:wred-profile-pac/wred-profile-capability:
+    parameters:
+      - $ref: '#/components/parameters/user'
+      - $ref: '#/components/parameters/originator'
+      - $ref: '#/components/parameters/x-correlator'
+      - $ref: '#/components/parameters/trace-indicator'
+      - $ref: '#/components/parameters/customer-journey'
+      - $ref: '#/components/parameters/mountName'
+      - $ref: '#/components/parameters/uuid'
+      - $ref: '#/components/parameters/fields'
+    get:
+      operationId: getCachedWredProfileCapability
+      summary: 'Provides WredProfileCapability from cache'
+      tags:
+        - IndividualServices
+      security:
+        - apiKeyAuth: []
+      responses:
+        '200':
+          description: 'WredProfileCapability provided from cache'
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - wred-profile-1-0:wred-profile-capability
+                properties:
+                  wred-profile-1-0:wred-profile-capability:
+                    $ref: '#/components/schemas/wred-profile-capability'
+                example:
+                  wred-profile-1-0:wred-profile-capability:
+                    available-buffer-size: 0
+                    drop-probability-at-threshold-low-is-avail: true
+                    gentle-wred-is-avail: true
+                    sensitivity-setting-is-avail: true
+                    coloring-is-avail: true
+          headers:
+            x-correlator:
+              $ref: '#/components/headers/x-correlator'
+            exec-time:
+              $ref: '#/components/headers/exec-time'
+            backend-time:
+              $ref: '#/components/headers/backend-time'
+            life-cycle-state:
+              $ref: '#/components/headers/life-cycle-state'
+        '4XX':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        '500':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        default:
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+  /generic/core-model-1-4:network-control-domain=cache/control-construct={mountName}/profile-collection/profile={uuid}/wred-profile-1-0:wred-profile-pac/wred-profile-configuration:
+    parameters:
+      - $ref: '#/components/parameters/user'
+      - $ref: '#/components/parameters/originator'
+      - $ref: '#/components/parameters/x-correlator'
+      - $ref: '#/components/parameters/trace-indicator'
+      - $ref: '#/components/parameters/customer-journey'
+      - $ref: '#/components/parameters/mountName'
+      - $ref: '#/components/parameters/uuid'
+      - $ref: '#/components/parameters/fields'
+    get:
+      operationId: getCachedWredProfileConfiguration
+      summary: 'Provides WredProfileConfiguration from cache'
+      tags:
+        - IndividualServices
+      security:
+        - apiKeyAuth: []
+      responses:
+        '200':
+          description: 'WredProfileConfiguration provided from cache'
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - wred-profile-1-0:wred-profile-configuration
+                properties:
+                  wred-profile-1-0:wred-profile-configuration:
+                    $ref: '#/components/schemas/wred-profile-configuration'
+                example:
+                  wred-profile-1-0:wred-profile-configuration:
+                    external-label: 'string'
+                    threshold-low: 0
+                    drop-probability-at-threshold-low: 0
+                    threshold-high: 0
+                    drop-probability-at-threshold-high: 0
+                    gentle-wred-is-on: true
+                    threshold-gentle: 0
+                    sensitivity: 0
+                    coloring-is-on: true
+          headers:
+            x-correlator:
+              $ref: '#/components/headers/x-correlator'
+            exec-time:
+              $ref: '#/components/headers/exec-time'
+            backend-time:
+              $ref: '#/components/headers/backend-time'
+            life-cycle-state:
+              $ref: '#/components/headers/life-cycle-state'
+        '4XX':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        '500':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        default:
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+
+  /generic/core-model-1-4:network-control-domain=live/control-construct={mountName}/wred-profile-1-0:create-wred-profile:
+    parameters:
+      - $ref: '#/components/parameters/user'
+      - $ref: '#/components/parameters/originator'
+      - $ref: '#/components/parameters/x-correlator'
+      - $ref: '#/components/parameters/trace-indicator'
+      - $ref: '#/components/parameters/customer-journey'
+      - $ref: '#/components/parameters/mountName'
+    post:
+      operationId: postCreateWredProfile
+      summary: 'Creates new instance of WredProfile'
+      tags:
+        - IndividualServices
+      security:
+        - apiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - input
+              properties:
+                input:
+                  type: object
+                  required:
+                    - external-label
+                    - threshold-low
+                    - drop-probability-at-threshold-low
+                    - threshold-high
+                    - drop-probability-at-threshold-high
+                    - gentle-wred-is-on
+                    - threshold-gentle
+                    - sensitivity
+                    - coloring-is-on
+                  properties:
+                    external-label:
+                      type: string
+                    threshold-low:
+                      type: string
+                    drop-probability-at-threshold-low:
+                      type: string
+                    threshold-high:
+                      type: string
+                    drop-probability-at-threshold-high:
+                      type: string
+                    gentle-wred-is-on:
+                      type: boolean
+                    threshold-gentle:
+                      type: string
+                    sensitivity:
+                      type: string
+                    coloring-is-on:
+                      type: boolean
+              example:
+                input:
+                  external-label: 'string'
+                  threshold-low: 'string'
+                  drop-probability-at-threshold-low: 'string'
+                  threshold-high: 'string'
+                  drop-probability-at-threshold-high: 'string'
+                  gentle-wred-is-on: true
+                  threshold-gentle: 'string'
+                  sensitivity: 'string'
+                  coloring-is-on: true
+      responses:
+        '200':
+          description: 'New instance of WredProfile created'
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - wred-profile-1-0:output
+                properties:
+                  wred-profile-1-0:output:
+                    type: object
+                    required:
+                      - created-wred-profile
+                    properties:
+                      created-wred-profile:
+                        type: string
+                example:
+                  wred-profile-1-0:output:
+                    created-wred-profile: 'string'
+          headers:
+            x-correlator:
+              $ref: '#/components/headers/x-correlator'
+            exec-time:
+              $ref: '#/components/headers/exec-time'
+            backend-time:
+              $ref: '#/components/headers/backend-time'
+            life-cycle-state:
+              $ref: '#/components/headers/life-cycle-state'
+        '4XX':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        '500':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        default:
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+  /generic/core-model-1-4:network-control-domain=live/control-construct={mountName}/wred-profile-1-0:modify-wred-profile:
+    parameters:
+      - $ref: '#/components/parameters/user'
+      - $ref: '#/components/parameters/originator'
+      - $ref: '#/components/parameters/x-correlator'
+      - $ref: '#/components/parameters/trace-indicator'
+      - $ref: '#/components/parameters/customer-journey'
+      - $ref: '#/components/parameters/mountName'
+    post:
+      operationId: postModifyWredProfile
+      summary: 'Modifies an existing WredProfile'
+      tags:
+        - IndividualServices
+      security:
+        - apiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - input
+              properties:
+                input:
+                  type: object
+                  required:
+                    - wred-profile-to-be-modified
+                  properties:
+                    wred-profile-to-be-modified:
+                      type: string
+                    external-label:
+                      type: string
+                    threshold-low:
+                      type: string
+                    drop-probability-at-threshold-low:
+                      type: string
+                    threshold-high:
+                      type: string
+                    drop-probability-at-threshold-high:
+                      type: string
+                    gentle-wred-is-on:
+                      type: boolean
+                    threshold-gentle:
+                      type: string
+                    sensitivity:
+                      type: string
+                    coloring-is-on:
+                      type: boolean
+              example:
+                input:
+                  wred-profile-to-be-modified: 'string'
+                  external-label: 'string'
+                  threshold-low: 'string'
+                  drop-probability-at-threshold-low: 'string'
+                  threshold-high: 'string'
+                  drop-probability-at-threshold-high: 'string'
+                  gentle-wred-is-on: true
+                  threshold-gentle: 'string'
+                  sensitivity: 'string'
+                  coloring-is-on: true
+      responses:
+        '204':
+          description: 'Instance of WredProfile updated'
+          headers:
+            x-correlator:
+              $ref: '#/components/headers/x-correlator'
+            exec-time:
+              $ref: '#/components/headers/exec-time'
+            backend-time:
+              $ref: '#/components/headers/backend-time'
+            life-cycle-state:
+              $ref: '#/components/headers/life-cycle-state'
+        '4XX':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        '500':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        default:
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+  /generic/core-model-1-4:network-control-domain=live/control-construct={mountName}/wred-profile-1-0:delete-wred-profile:
+    parameters:
+      - $ref: '#/components/parameters/user'
+      - $ref: '#/components/parameters/originator'
+      - $ref: '#/components/parameters/x-correlator'
+      - $ref: '#/components/parameters/trace-indicator'
+      - $ref: '#/components/parameters/customer-journey'
+      - $ref: '#/components/parameters/mountName'
+    post:
+      operationId: postDeleteWredProfile
+      summary: 'Deletes an instance of WredProfile'
+      tags:
+        - IndividualServices
+      security:
+        - apiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - input
+              properties:
+                input:
+                  type: object
+                  required:
+                  - obsolete-wred-profile
+                  properties:
+                    obsolete-wred-profile:
+                      type: string
+              example:
+                input:
+                  obsolete-wred-profile: 'string'
+      responses:
+        '204':
+          description: 'Instance of WredProfile deleted'
+          headers:
+            x-correlator:
+              $ref: '#/components/headers/x-correlator'
+            exec-time:
+              $ref: '#/components/headers/exec-time'
+            backend-time:
+              $ref: '#/components/headers/backend-time'
+            life-cycle-state:
+              $ref: '#/components/headers/life-cycle-state'
+        '4XX':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        '500':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        default:
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+
+
+########################################################################################################################
+#   Common Components
+########################################################################################################################
+components:
+  parameters:
+    user:
+      name: user
+      in: header
+      required: true
+      schema:
+        type: string
+        example: 'User Name'
+      description: 'User identifier from the system starting the service call'
+    originator:
+      name: originator
+      in: header
+      required: true
+      schema:
+        type: string
+        minLength: 3
+        example: 'Resolver'
+      description: >
+        'Identification for the system consuming the API, as defined in
+         [/core-model-1-4:control-construct/logical-termination-point={uuid}/layer-protocol=0/http-client-interface-1-0:http-client-interface-pac/http-client-interface-configuration/application-name]'
+    x-correlator:
+      name: x-correlator
+      in: header
+      required: true
+      schema:
+        type: string
+        pattern: '^[0-9A-Fa-f]{8}(?:-[0-9A-Fa-f]{4}){3}-[0-9A-Fa-f]{12}$'
+        description: 'Empty string accepted from external applications.'
+        example: '550e8400-e29b-11d4-a716-446655440000'
+      description: 'UUID for the service execution flow that allows to correlate requests and responses'
+    trace-indicator:
+      name: trace-indicator
+      in: header
+      required: true
+      schema:
+        type: string
+        pattern: '^([0-9]+)(\.([0-9]+))*$'
+        description: 'Empty string accepted from external applications.'
+        example: '1.3.1'
+      description: 'Sequence of request numbers along the flow'
+    customer-journey:
+      name: customer-journey
+      in: header
+      required: true
+      schema:
+        type: string
+        example: 'Unknown value'
+      description: 'Holds information supporting customer’s journey to which the execution applies'
+    mountName:
+      name: mountName
+      in: path
+      required: true
+      schema:
+        type: string
+        example: '222250001'
+      description: 'The mountName of the device that is addressed by the request'
+    uuid:
+      name: uuid
+      in: path
+      required: true
+      schema:
+        type: string
+        example: 'LTP-MWPS-TTP-1-1'
+      description: 'Instance identifier that is unique within the device'
+    uuid1:
+      name: uuid1
+      in: path
+      required: true
+      schema:
+        type: string
+        example: 'LTP-MWPS-TTP-1-1'
+      description: 'Another instance identifier that is unique within the device'
+    localId:
+      name: localId
+      in: path
+      required: true
+      schema:
+        type: string
+        example: 'LP-MWPS-TTP-1-1'
+      description: 'Instance identifier that is unique within its list'
+    fields:
+      name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+        example: 'node(node-id;netconf-node-topology:connection-status)'
+      description: 'Query parameter to filter ressources according to RFC8040 fields filter spec'
+  responses:
+    responseForErroredServiceRequests:
+      description: 'Response in case of errored service requests'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorDescription'
+      headers:
+        x-correlator:
+          schema:
+            type: string
+            pattern: '^[0-9A-Fa-f]{8}(?:-[0-9A-Fa-f]{4}){3}-[0-9A-Fa-f]{12}$'
+            example: '550e8400-e29b-11d4-a716-446655440000'
+          description: 'UUID for the service execution flow that allows to correlate requests and responses. Its value must be identical at the response compared with its corresponding request'
+        exec-time:
+          schema:
+            type: integer
+            example: 1100
+          description: 'Value written by the service provider, reporting the total elapsed time for the execution, including all the additional processing needed to retrieve the data from the backend service. Expressed in milliseconds'
+        backend-time:
+          schema:
+            type: integer
+            example: 850
+          description: 'Value written by the service provider, reporting the elapsed time for data retrieval from the backend (service invocation, database access…). Expressed in milliseconds'
+    responseForErroredOamRequests:
+      description: 'Response in case of errored OaM requests'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorDescription'
+  headers:
+    x-correlator:
+      schema:
+        type: string
+        example: '550e8400-e29b-11d4-a716-446655440000'
+      description: 'UUID for the service execution flow that allows to correlate requests and responses. Its value must be identical at the response compared with its corresponding request'
+    exec-time:
+      schema:
+        type: integer
+        example: 1100
+      description: 'Value written by the service provider, reporting the total elapsed time for the execution, including all the additional processing needed to retrieve the data from the backend service. Expressed in milliseconds'
+    backend-time:
+      schema:
+        type: integer
+        example: 850
+      description: 'Value written by the service provider, reporting the elapsed time for data retrieval from the backend (service invocation, database access…). Expressed in milliseconds'
+    life-cycle-state:
+      schema:
+        type: string
+        enum:
+          - 'EXPERIMENTAL'
+          - 'OPERATIONAL'
+          - 'DEPRECATED'
+          - 'OBSOLETE'
+          - 'UNKNOWN'
+          - 'NOT_YET_DEFINED'
+        example: 'EXPERIMENTAL'
+  schemas:
+    errorDescription:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+
+    wred-profile-capability:
+      type: object
+      required:
+        - available-buffer-size
+        - drop-probability-at-threshold-low-is-avail
+        - gentle-wred-is-avail
+        - sensitivity-setting-is-avail
+        - coloring-is-avail
+      properties:
+        available-buffer-size:
+          type: integer
+          format: int32
+        drop-probability-at-threshold-low-is-avail:
+          type: boolean
+        gentle-wred-is-avail:
+          type: boolean
+        sensitivity-setting-is-avail:
+          type: boolean
+        coloring-is-avail:
+          type: boolean
+    wred-profile-configuration:
+      type: object
+      required:
+        - external-label
+        - threshold-low
+        - drop-probability-at-threshold-low
+        - threshold-high
+        - drop-probability-at-threshold-high
+        - gentle-wred-is-on
+        - threshold-gentle
+        - sensitivity
+        - coloring-is-on
+      properties:
+        external-label:
+          type: string
+        threshold-low:
+          type: integer
+          format: int32
+        drop-probability-at-threshold-low:
+          type: integer
+          format: int8
+        threshold-high:
+          type: integer
+          format: int32
+        drop-probability-at-threshold-high:
+          type: integer
+          format: int8
+        gentle-wred-is-on:
+          type: boolean
+        threshold-gentle:
+          type: integer
+          format: int32
+        sensitivity:
+          type: integer
+          format: int8
+        coloring-is-on:
+          type: boolean
+
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: operation-key
+    basicAuth:
+      type: http
+      scheme: basic

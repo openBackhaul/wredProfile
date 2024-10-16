@@ -23,10 +23,10 @@
 - [WredProfile_1.0.0-tsi.240104.1945+schema](./WredProfile_1.0.0-tsi.240104.1945+schema/)
 
 ### Interface Simulator
-- [WredProfile_1.0.0-tsi.240104.1945+simulator](./WredProfile_1.0.0-tsi.240104.1945+simulator/)
+- [WredProfile_1.0.0-tsi.240104.1945+simulator](./WredProfile_1.0.0-tsi.240104.1945+simu/)
 
 ### Interface Validator
-- [WredProfile_1.0.0-tsi.240104.1945+validator](./WredProfile_1.0.0-tsi.240104.1945+validator/)
+- [WredProfile_1.0.0-tsi.240104.1945+validator](./WredProfile_1.0.0-tsi.240104.1945+vali/)
 
 ### Publication
 - Published as a part of ONF TR-532 v2.0  

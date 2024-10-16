@@ -1,0 +1,579 @@
+openapi: 3.0.1
+info:
+  title: WredProfile_1.0.0-tsi.240104.1945+simulator.1
+  version: 1.0.0
+
+paths:
+
+########################################################################################################################
+#   Generic Paths
+########################################################################################################################
+  /core-model-1-4:network-control-domain=cache/control-construct={mountName}/profile-collection/profile={uuid}/wred-profile-1-0:wred-profile-pac/wred-profile-capability:
+    parameters:
+      - $ref: '#/components/parameters/user'
+      - $ref: '#/components/parameters/originator'
+      - $ref: '#/components/parameters/x-correlator'
+      - $ref: '#/components/parameters/trace-indicator'
+      - $ref: '#/components/parameters/customer-journey'
+      - $ref: '#/components/parameters/mountName'
+      - $ref: '#/components/parameters/uuid'
+      - $ref: '#/components/parameters/fields'
+    get:
+      operationId: getCachedWredProfileCapability
+      summary: 'Provides WredProfileCapability from cache'
+      tags:
+        - IndividualServices
+      security:
+        - apiKeyAuth: []
+      responses:
+        '200':
+          description: 'WredProfileCapability provided from cache'
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - wred-profile-1-0:wred-profile-capability
+                properties:
+                  wred-profile-1-0:wred-profile-capability:
+                    $ref: '#/components/schemas/wred-profile-capability'
+                example:
+                  wred-profile-1-0:wred-profile-capability:
+                    available-buffer-size: 0
+                    drop-probability-at-threshold-low-is-avail: true
+                    gentle-wred-is-avail: true
+                    sensitivity-setting-is-avail: true
+                    coloring-is-avail: true
+          headers:
+            x-correlator:
+              $ref: '#/components/headers/x-correlator'
+            exec-time:
+              $ref: '#/components/headers/exec-time'
+            backend-time:
+              $ref: '#/components/headers/backend-time'
+            life-cycle-state:
+              $ref: '#/components/headers/life-cycle-state'
+        '4XX':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        '500':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        default:
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+  /core-model-1-4:network-control-domain=cache/control-construct={mountName}/profile-collection/profile={uuid}/wred-profile-1-0:wred-profile-pac/wred-profile-configuration:
+    parameters:
+      - $ref: '#/components/parameters/user'
+      - $ref: '#/components/parameters/originator'
+      - $ref: '#/components/parameters/x-correlator'
+      - $ref: '#/components/parameters/trace-indicator'
+      - $ref: '#/components/parameters/customer-journey'
+      - $ref: '#/components/parameters/mountName'
+      - $ref: '#/components/parameters/uuid'
+      - $ref: '#/components/parameters/fields'
+    get:
+      operationId: getCachedWredProfileConfiguration
+      summary: 'Provides WredProfileConfiguration from cache'
+      tags:
+        - IndividualServices
+      security:
+        - apiKeyAuth: []
+      responses:
+        '200':
+          description: 'WredProfileConfiguration provided from cache'
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - wred-profile-1-0:wred-profile-configuration
+                properties:
+                  wred-profile-1-0:wred-profile-configuration:
+                    $ref: '#/components/schemas/wred-profile-configuration'
+                example:
+                  wred-profile-1-0:wred-profile-configuration:
+                    external-label: 'string'
+                    threshold-low: 0
+                    drop-probability-at-threshold-low: 0
+                    threshold-high: 0
+                    drop-probability-at-threshold-high: 0
+                    gentle-wred-is-on: true
+                    threshold-gentle: 0
+                    sensitivity: 0
+                    coloring-is-on: true
+          headers:
+            x-correlator:
+              $ref: '#/components/headers/x-correlator'
+            exec-time:
+              $ref: '#/components/headers/exec-time'
+            backend-time:
+              $ref: '#/components/headers/backend-time'
+            life-cycle-state:
+              $ref: '#/components/headers/life-cycle-state'
+        '4XX':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        '500':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        default:
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+
+  /core-model-1-4:network-control-domain=live/control-construct={mountName}/wred-profile-1-0:create-wred-profile:
+    parameters:
+      - $ref: '#/components/parameters/user'
+      - $ref: '#/components/parameters/originator'
+      - $ref: '#/components/parameters/x-correlator'
+      - $ref: '#/components/parameters/trace-indicator'
+      - $ref: '#/components/parameters/customer-journey'
+      - $ref: '#/components/parameters/mountName'
+    post:
+      operationId: postCreateWredProfile
+      summary: 'Creates new instance of WredProfile'
+      tags:
+        - IndividualServices
+      security:
+        - apiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - input
+              properties:
+                input:
+                  type: object
+                  required:
+                    - external-label
+                    - threshold-low
+                    - drop-probability-at-threshold-low
+                    - threshold-high
+                    - drop-probability-at-threshold-high
+                    - gentle-wred-is-on
+                    - threshold-gentle
+                    - sensitivity
+                    - coloring-is-on
+                  properties:
+                    external-label:
+                      type: string
+                    threshold-low:
+                      type: string
+                    drop-probability-at-threshold-low:
+                      type: string
+                    threshold-high:
+                      type: string
+                    drop-probability-at-threshold-high:
+                      type: string
+                    gentle-wred-is-on:
+                      type: boolean
+                    threshold-gentle:
+                      type: string
+                    sensitivity:
+                      type: string
+                    coloring-is-on:
+                      type: boolean
+              example:
+                input:
+                  external-label: 'string'
+                  threshold-low: 'string'
+                  drop-probability-at-threshold-low: 'string'
+                  threshold-high: 'string'
+                  drop-probability-at-threshold-high: 'string'
+                  gentle-wred-is-on: true
+                  threshold-gentle: 'string'
+                  sensitivity: 'string'
+                  coloring-is-on: true
+      responses:
+        '200':
+          description: 'New instance of WredProfile created'
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - wred-profile-1-0:output
+                properties:
+                  wred-profile-1-0:output:
+                    type: object
+                    required:
+                      - created-wred-profile
+                    properties:
+                      created-wred-profile:
+                        type: string
+                example:
+                  wred-profile-1-0:output:
+                    created-wred-profile: 'string'
+          headers:
+            x-correlator:
+              $ref: '#/components/headers/x-correlator'
+            exec-time:
+              $ref: '#/components/headers/exec-time'
+            backend-time:
+              $ref: '#/components/headers/backend-time'
+            life-cycle-state:
+              $ref: '#/components/headers/life-cycle-state'
+        '4XX':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        '500':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        default:
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+  /core-model-1-4:network-control-domain=live/control-construct={mountName}/wred-profile-1-0:modify-wred-profile:
+    parameters:
+      - $ref: '#/components/parameters/user'
+      - $ref: '#/components/parameters/originator'
+      - $ref: '#/components/parameters/x-correlator'
+      - $ref: '#/components/parameters/trace-indicator'
+      - $ref: '#/components/parameters/customer-journey'
+      - $ref: '#/components/parameters/mountName'
+    post:
+      operationId: postModifyWredProfile
+      summary: 'Modifies an existing WredProfile'
+      tags:
+        - IndividualServices
+      security:
+        - apiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - input
+              properties:
+                input:
+                  type: object
+                  required:
+                    - wred-profile-to-be-modified
+                  properties:
+                    wred-profile-to-be-modified:
+                      type: string
+                    external-label:
+                      type: string
+                    threshold-low:
+                      type: string
+                    drop-probability-at-threshold-low:
+                      type: string
+                    threshold-high:
+                      type: string
+                    drop-probability-at-threshold-high:
+                      type: string
+                    gentle-wred-is-on:
+                      type: boolean
+                    threshold-gentle:
+                      type: string
+                    sensitivity:
+                      type: string
+                    coloring-is-on:
+                      type: boolean
+              example:
+                input:
+                  wred-profile-to-be-modified: 'string'
+                  external-label: 'string'
+                  threshold-low: 'string'
+                  drop-probability-at-threshold-low: 'string'
+                  threshold-high: 'string'
+                  drop-probability-at-threshold-high: 'string'
+                  gentle-wred-is-on: true
+                  threshold-gentle: 'string'
+                  sensitivity: 'string'
+                  coloring-is-on: true
+      responses:
+        '204':
+          description: 'Instance of WredProfile updated'
+          headers:
+            x-correlator:
+              $ref: '#/components/headers/x-correlator'
+            exec-time:
+              $ref: '#/components/headers/exec-time'
+            backend-time:
+              $ref: '#/components/headers/backend-time'
+            life-cycle-state:
+              $ref: '#/components/headers/life-cycle-state'
+        '4XX':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        '500':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        default:
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+  /core-model-1-4:network-control-domain=live/control-construct={mountName}/wred-profile-1-0:delete-wred-profile:
+    parameters:
+      - $ref: '#/components/parameters/user'
+      - $ref: '#/components/parameters/originator'
+      - $ref: '#/components/parameters/x-correlator'
+      - $ref: '#/components/parameters/trace-indicator'
+      - $ref: '#/components/parameters/customer-journey'
+      - $ref: '#/components/parameters/mountName'
+    post:
+      operationId: postDeleteWredProfile
+      summary: 'Deletes an instance of WredProfile'
+      tags:
+        - IndividualServices
+      security:
+        - apiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - input
+              properties:
+                input:
+                  type: object
+                  required:
+                  - obsolete-wred-profile
+                  properties:
+                    obsolete-wred-profile:
+                      type: string
+              example:
+                input:
+                  obsolete-wred-profile: 'string'
+      responses:
+        '204':
+          description: 'Instance of WredProfile deleted'
+          headers:
+            x-correlator:
+              $ref: '#/components/headers/x-correlator'
+            exec-time:
+              $ref: '#/components/headers/exec-time'
+            backend-time:
+              $ref: '#/components/headers/backend-time'
+            life-cycle-state:
+              $ref: '#/components/headers/life-cycle-state'
+        '4XX':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        '500':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        default:
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+
+
+########################################################################################################################
+#   Common Components
+########################################################################################################################
+components:
+  parameters:
+    user:
+      name: user
+      in: header
+      required: true
+      schema:
+        type: string
+        example: 'User Name'
+      description: 'User identifier from the system starting the service call'
+    originator:
+      name: originator
+      in: header
+      required: true
+      schema:
+        type: string
+        minLength: 3
+        example: 'Resolver'
+      description: >
+        'Identification for the system consuming the API, as defined in
+         [/core-model-1-4:control-construct/logical-termination-point={uuid}/layer-protocol=0/http-client-interface-1-0:http-client-interface-pac/http-client-interface-configuration/application-name]'
+    x-correlator:
+      name: x-correlator
+      in: header
+      required: true
+      schema:
+        type: string
+        pattern: '^[0-9A-Fa-f]{8}(?:-[0-9A-Fa-f]{4}){3}-[0-9A-Fa-f]{12}$'
+        description: 'Empty string accepted from external applications.'
+        example: '550e8400-e29b-11d4-a716-446655440000'
+      description: 'UUID for the service execution flow that allows to correlate requests and responses'
+    trace-indicator:
+      name: trace-indicator
+      in: header
+      required: true
+      schema:
+        type: string
+        pattern: '^([0-9]+)(\.([0-9]+))*$'
+        description: 'Empty string accepted from external applications.'
+        example: '1.3.1'
+      description: 'Sequence of request numbers along the flow'
+    customer-journey:
+      name: customer-journey
+      in: header
+      required: true
+      schema:
+        type: string
+        example: 'Unknown value'
+      description: 'Holds information supporting customer’s journey to which the execution applies'
+    mountName:
+      name: mountName
+      in: path
+      required: true
+      schema:
+        type: string
+        example: '222250001'
+      description: 'The mountName of the device that is addressed by the request'
+    uuid:
+      name: uuid
+      in: path
+      required: true
+      schema:
+        type: string
+        example: 'LTP-MWPS-TTP-1-1'
+      description: 'Instance identifier that is unique within the device'
+    uuid1:
+      name: uuid1
+      in: path
+      required: true
+      schema:
+        type: string
+        example: 'LTP-MWPS-TTP-1-1'
+      description: 'Another instance identifier that is unique within the device'
+    localId:
+      name: localId
+      in: path
+      required: true
+      schema:
+        type: string
+        example: 'LP-MWPS-TTP-1-1'
+      description: 'Instance identifier that is unique within its list'
+    fields:
+      name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+        example: 'node(node-id;netconf-node-topology:connection-status)'
+      description: 'Query parameter to filter ressources according to RFC8040 fields filter spec'
+  responses:
+    responseForErroredServiceRequests:
+      description: 'Response in case of errored service requests'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorDescription'
+      headers:
+        x-correlator:
+          schema:
+            type: string
+            pattern: '^[0-9A-Fa-f]{8}(?:-[0-9A-Fa-f]{4}){3}-[0-9A-Fa-f]{12}$'
+            example: '550e8400-e29b-11d4-a716-446655440000'
+          description: 'UUID for the service execution flow that allows to correlate requests and responses. Its value must be identical at the response compared with its corresponding request'
+        exec-time:
+          schema:
+            type: integer
+            example: 1100
+          description: 'Value written by the service provider, reporting the total elapsed time for the execution, including all the additional processing needed to retrieve the data from the backend service. Expressed in milliseconds'
+        backend-time:
+          schema:
+            type: integer
+            example: 850
+          description: 'Value written by the service provider, reporting the elapsed time for data retrieval from the backend (service invocation, database access…). Expressed in milliseconds'
+    responseForErroredOamRequests:
+      description: 'Response in case of errored OaM requests'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorDescription'
+  headers:
+    x-correlator:
+      schema:
+        type: string
+        example: '550e8400-e29b-11d4-a716-446655440000'
+      description: 'UUID for the service execution flow that allows to correlate requests and responses. Its value must be identical at the response compared with its corresponding request'
+    exec-time:
+      schema:
+        type: integer
+        example: 1100
+      description: 'Value written by the service provider, reporting the total elapsed time for the execution, including all the additional processing needed to retrieve the data from the backend service. Expressed in milliseconds'
+    backend-time:
+      schema:
+        type: integer
+        example: 850
+      description: 'Value written by the service provider, reporting the elapsed time for data retrieval from the backend (service invocation, database access…). Expressed in milliseconds'
+    life-cycle-state:
+      schema:
+        type: string
+        enum:
+          - 'EXPERIMENTAL'
+          - 'OPERATIONAL'
+          - 'DEPRECATED'
+          - 'OBSOLETE'
+          - 'UNKNOWN'
+          - 'NOT_YET_DEFINED'
+        example: 'EXPERIMENTAL'
+  schemas:
+    errorDescription:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+
+    wred-profile-capability:
+      type: object
+      required:
+        - available-buffer-size
+        - drop-probability-at-threshold-low-is-avail
+        - gentle-wred-is-avail
+        - sensitivity-setting-is-avail
+        - coloring-is-avail
+      properties:
+        available-buffer-size:
+          type: integer
+          format: int32
+        drop-probability-at-threshold-low-is-avail:
+          type: boolean
+        gentle-wred-is-avail:
+          type: boolean
+        sensitivity-setting-is-avail:
+          type: boolean
+        coloring-is-avail:
+          type: boolean
+    wred-profile-configuration:
+      type: object
+      required:
+        - external-label
+        - threshold-low
+        - drop-probability-at-threshold-low
+        - threshold-high
+        - drop-probability-at-threshold-high
+        - gentle-wred-is-on
+        - threshold-gentle
+        - sensitivity
+        - coloring-is-on
+      properties:
+        external-label:
+          type: string
+        threshold-low:
+          type: integer
+          format: int32
+        drop-probability-at-threshold-low:
+          type: integer
+          format: int8
+        threshold-high:
+          type: integer
+          format: int32
+        drop-probability-at-threshold-high:
+          type: integer
+          format: int8
+        gentle-wred-is-on:
+          type: boolean
+        threshold-gentle:
+          type: integer
+          format: int32
+        sensitivity:
+          type: integer
+          format: int8
+        coloring-is-on:
+          type: boolean
+
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: operation-key
+    basicAuth:
+      type: http
+      scheme: basic
