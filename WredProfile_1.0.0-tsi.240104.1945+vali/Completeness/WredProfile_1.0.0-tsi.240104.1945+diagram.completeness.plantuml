@@ -10,8 +10,8 @@ participant "Collection" as Collection
 participant "/control-construct?fields=..." as ListOfLTPUuidAndLidPairsAndNames
 participant "/ethernet-container-capability" as EthernetContainerCapability
 participant "../profile-collection" as ProfileCollection
-participant "../scheduler-profile-capability" as Capability
-participant "../scheduler-profile-configuration" as Configuration
+participant "../wred-profile-capability" as Capability
+participant "../wred-profile-configuration" as Configuration
 participant "../createWredProfile" as CreateRpc
 participant "../modifyWredProfile" as ModifyRpc
 participant "../deleteWredProfile" as DeleteRpc

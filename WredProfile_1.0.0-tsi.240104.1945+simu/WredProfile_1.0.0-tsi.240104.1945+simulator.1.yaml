@@ -322,7 +322,7 @@ paths:
                 input:
                   type: object
                   required:
-                  - obsolete-wred-profile
+                    - obsolete-wred-profile
                   properties:
                     obsolete-wred-profile:
                       type: string
